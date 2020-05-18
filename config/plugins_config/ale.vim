@@ -1,0 +1,18 @@
+" let g:ale_linters = {
+"             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"             \   'asm': ['gcc'],
+"             \   'nasm': ['nasm'],
+"             \   'c': ['cppcheck', 'clang'],
+"             \   'cpp': ['cppcheck', 'clang'],
+"             \   'cmake': ['cmake-format'],
+"             \   'python': ['pylint', 'flake8'],
+"             \   'cuda': ['nvcc'],
+"             \   'go': ['gofmt'],
+"             \   'java': ['javac'],
+"             \   'javascript': ['eslint'],
+"             \   'shell': ['shell -n flag'],
+"             \   'lua': ['luac'],
+"             \   'yaml': ['prettier'],
+"             \   'latex': ['alex'],
+"             \   'vue': ['eslint'],
+"             \ }
