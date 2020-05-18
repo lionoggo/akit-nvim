@@ -23,6 +23,7 @@ if index(g:plugin_group,'basic') >=0
 	" vim中文文档
 	Plug 'yianwillis/vimcdoc'
 	Plug 'tpope/vim-surround'
+	Plug 'flazz/vim-colorschemes'
 endif
 
 " 增强扩展插件
