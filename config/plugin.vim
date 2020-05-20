@@ -59,6 +59,8 @@ endif
 " git设置
 if index(g:plugin_group,'git') >=0
     Plug 'tpope/vim-fugitive'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     " NERDTree中显示git status的插件
