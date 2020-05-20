@@ -1,8 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  " => 首次使用自动加载
  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.nvim_runtime/autoload/plug.vim'))
+        silent !curl -fLo ~/.nvim_runtime/autoload/plug.vim --create-dirs
                                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -10,9 +10,8 @@ endif
 if !exists('g:plugin_group')
 	let g:plugin_group = ['basic','enhanced','git']
 endif
-
 " 在~/.config/nvim/plugged下安装插件
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.nvim_runtime/plugged')
 
 " 基本插件设置
 if index(g:plugin_group,'basic') >=0
@@ -61,6 +60,8 @@ endif
 " git设置
 if index(g:plugin_group,'git') >=0
     Plug 'tpope/vim-fugitive'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     " NERDTree中显示git status的插件

@@ -28,14 +28,14 @@ set nobackup
 set nowb
 set noswapfile
 
-silent !mkdir -p ~/.config/nvim/tmp/backup
-silent !mkdir -p ~/.config/nvim/tmp/undo
-"silent !mkdir -p ~/.config/nvim/tmp/sessions
-set backupdir=~/.config/nvim/tmp/backup,.
-set directory=~/.config/nvim/tmp/backup,.
+silent !mkdir -p ~/.nvim_runtime/tmp/backup
+silent !mkdir -p ~/.nvim_runtime/tmp/undo
+"silent !mkdir -p ~/.nvim_runtime/tmp/sessions
+set backupdir=~/.nvim_runtime/tmp/backup,.
+set directory=~/.nvim_runtime/tmp/backup,.
 if has('persistent_undo')
 	set undofile
-	set undodir=~/.config/nvim/tmp/undo,.
+	set undodir=~/.nvim_runtime/tmp/undo,.
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
