@@ -8,6 +8,12 @@ nmap <leader>w :w!<cr>
 " map <leader>sa ggVG
 " 快速打开init.vim配置
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+" undo
+nnoremap U <C-r>
+
+" 缩进后保持选中状态,方便后续继续缩进
+vnoremap < <gv
+vnoremap > >gv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 可视模式
