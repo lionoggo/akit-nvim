@@ -51,6 +51,8 @@ endif
 set number
 " 总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
 set signcolumn=yes
+" 显示标签栏
+set showtabline=2
 " 显示最后一行
 set display=lastline
 " 设置显示制表符等隐藏字符
@@ -194,6 +196,8 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set autoindent smartindent shiftround
+" 打开C/C++语言缩进优化
+set cindent
 
 set lbr
 set tw=500
