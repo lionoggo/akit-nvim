@@ -1,19 +1,25 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- " => 首次使用自动加载
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 首次使用自动加载
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.nvim_runtime/autoload/plug.vim'))
         silent !curl -fLo ~/.nvim_runtime/autoload/plug.vim --create-dirs
                                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" 分组加载插件
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 分组加载插件
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('g:plugin_group')
-	let g:plugin_group = ['basic','enhanced','git']
+	let g:plugin_group = ['basic','enhanced','git','filetypes']
 endif
+
 " 在~/.config/nvim/plugged下安装插件
 call plug#begin('~/.nvim_runtime/plugged')
 
-" 基本插件设置
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 基本插件
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if index(g:plugin_group,'basic') >=0
 	" 展示开始画面，显示最近编辑过的文件
 	Plug 'mhinz/vim-startify'
@@ -25,7 +31,9 @@ if index(g:plugin_group,'basic') >=0
 	Plug 'flazz/vim-colorschemes'
 endif
 
-" 增强扩展插件
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 增强扩展插件
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if index(g:plugin_group,'enhanced') >=0
 	" coc自动补全
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -57,7 +65,9 @@ if index(g:plugin_group,'enhanced') >=0
 
 endif
 
-" git设置
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Git增强
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if index(g:plugin_group,'git') >=0
     Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline'
@@ -67,6 +77,26 @@ if index(g:plugin_group,'git') >=0
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     " NERDTree中显示git status的插件
     Plug 'Xuyuanp/nerdtree-git-plugin'
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 文件类型扩展
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if index(g:plugin_group,'filetypes') >=0
+    " powershell脚本文件的语法高亮
+	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
+
+    " C++ 语法高亮增强,支持11/14/17
+	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
+
+    " 额外语法文件
+	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
+
+    " rust语法增强
+	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+
+    " 其他语法文件
+	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 endif
 
 call plug#end()
