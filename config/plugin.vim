@@ -62,6 +62,7 @@ if index(g:plugin_group,'git') >=0
     Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	" 在sign列中显示git diff情况:添加,修改或删除的行
     Plug 'airblade/vim-gitgutter'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     " NERDTree中显示git status的插件
