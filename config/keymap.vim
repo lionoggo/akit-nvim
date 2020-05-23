@@ -14,9 +14,15 @@ nnoremap U <C-r>
 " 缩进后保持选中状态,方便后续继续缩进
 vnoremap < <gv
 vnoremap > >gv
+
 " 行首&行尾
 nnoremap H ^
 nnoremap L $
+" 默认情况下,k为向下移动实际的一行,但更多情况下,我们期望该操作移动的是屏幕行,也就是使用gk,为了方便我们兑换这两个操作
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 可视模式
