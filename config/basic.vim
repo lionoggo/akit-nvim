@@ -13,6 +13,8 @@ filetype plugin on
 filetype indent on
 " 启用自动加载
 set autoread
+" 使用系统剪贴板
+set clipboard+=unnamedplus
 au FocusGained,BufEnter * checktime
 " :W sudo保存文件
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
