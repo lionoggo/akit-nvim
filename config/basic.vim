@@ -8,7 +8,7 @@ set ttimeout
 set timeoutlen=50
 " 操作历史设置
 set history=500
-" 开启文件类型检测 
+" 开启文件类型检测
 filetype plugin on
 filetype indent on
 " 启用自动加载
@@ -22,9 +22,13 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+" 保存时,删除尾随空格
+if has("autocmd")
+	au BufWritePre * %s/\s\+$//e
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => 备份设置 
+" => 备份设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
 set nowb
@@ -32,7 +36,7 @@ set noswapfile
 
 silent !mkdir -p ~/.nvim_runtime/tmp/backup
 silent !mkdir -p ~/.nvim_runtime/tmp/undo
-"silent !mkdir -p ~/.nvim_runtime/tmp/sessions
+" silent !mkdir -p ~/.nvim_runtime/tmp/sessions
 set backupdir=~/.nvim_runtime/tmp/backup,.
 set directory=~/.nvim_runtime/tmp/backup,.
 if has('persistent_undo')
@@ -75,7 +79,7 @@ set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 开启状态栏标尺
 set ruler
-" 一直显示状态栏 
+" 一直显示状态栏
 set laststatus=2
 set statusline=                                 " 清空状态了
 set statusline+=\ %F                            " 文件名
