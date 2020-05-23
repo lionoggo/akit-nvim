@@ -1,3 +1,11 @@
+" 防止重复加载
+if get(s:, 'loaded',0) != 0
+    finish
+else
+    let s:loaded = 1
+endif
+
+" 获取本文件所在目录
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:home = s:home.'/config'
 
@@ -12,7 +20,7 @@ command! -nargs=1 LoadScript exec 'source '.s:home.'/'.'<args>'
 LoadScript basic.vim
 
 " 加载filetype
-LoadScript filetypes.vim
+ LoadScript filetypes.vim
 
 " 加载按键映射配置
 LoadScript keymap.vim
