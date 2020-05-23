@@ -69,6 +69,7 @@ set magic
 set showmatch
 set mat=2
 set foldcolumn=1
+hi! FoldColumn guibg=NONE ctermbg=NONE
 " 允许下方显示目录
 set wildmenu
 " 右下角显示命令
