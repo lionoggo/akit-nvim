@@ -97,4 +97,14 @@ if index(g:plugin_group,'filetypes') >=0
     Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Markdown
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if index(g:plugin_group,'git') >=0
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'mzlogin/vim-markdown-toc'
+endif
+
+
 call plug#end()
