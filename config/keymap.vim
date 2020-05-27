@@ -15,9 +15,9 @@ nnoremap U <C-r>
 vnoremap < <gv
 vnoremap > >gv
 
-" 行首&行尾
-nnoremap H ^
-nnoremap L $
+" 行首&行尾,由于H/M/L原生表示为跳转到屏幕最上方/中间/最下方,因此屏蔽,使用原生^/$
+" nnoremap H ^
+" nnoremap L $
 " 默认情况下,k为向下移动实际的一行,但更多情况下,我们期望该操作移动的是屏幕行,也就是使用gk,为了方便我们兑换这两个操作
 nnoremap k gk
 nnoremap gk k
