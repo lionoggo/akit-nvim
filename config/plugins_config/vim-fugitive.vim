@@ -2,6 +2,12 @@ nnoremap gca :Gcommit -a -v<CR>
 nnoremap gb :Gblame<CR>
 nnoremap ga :Gstatus<CR>
 nnoremap gp :Nrun git push<CR>
+
+" 合并冲突的时候,在Gstatus下使用dd/dv进入水平/竖直分栏状态:gf用来应用左边修改;gh用来应用右边修改
+" (以g为分割点,左边是f,右边是h)
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gl :diffget //2<CR>
+
 " 在新的terminal中执行push操作,不阻塞当前操作
 command! -complete=file -nargs=* Nrun :call s:Terminal(<q-args>)
 
