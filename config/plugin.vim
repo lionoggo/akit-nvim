@@ -60,6 +60,8 @@ if index(g:plugin_group,'enhanced') >=0
     " 多彩括号
     Plug 'luochen1990/rainbow'
     Plug 'liuchengxu/vista.vim'
+    " rust
+    Plug 'rust-lang/rust.vim'
 
 endif
 
