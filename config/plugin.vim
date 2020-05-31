@@ -28,7 +28,19 @@ if index(g:plugin_group,'basic') >=0
     " vim中文文档
     Plug 'yianwillis/vimcdoc'
     Plug 'tpope/vim-surround'
+    " 主题库
     Plug 'flazz/vim-colorschemes'
+    " 文件浏览
+    Plug 'preservim/nerdtree'
+    " 模糊搜索
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'mbbill/undotree'
+    " 平滑滚动
+    Plug 'terryma/vim-smooth-scroll'
+    " vim启动界面
+    Plug 'liuchengxu/vista.vim'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -41,28 +53,17 @@ if index(g:plugin_group,'enhanced') >=0
     Plug 'Chiel92/vim-autoformat'
     " 注释插件
     Plug 'scrooloose/nerdcommenter'
-    " 文件浏览
-    Plug 'preservim/nerdtree'
-    " 模糊搜索
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     " 自动补全括号等
     Plug 'jiangmiao/auto-pairs'
-    Plug 'mbbill/undotree'
+    " 多彩括号
+    Plug 'luochen1990/rainbow'
     " 异步语法检查
     Plug 'w0rp/ale'
-    " 平滑滚动
-    Plug 'terryma/vim-smooth-scroll'
+    " 代码片段库,结合coc-snippets
+    Plug 'honza/vim-snippets'
     " Flutter
     Plug 'theniceboy/dart-vim-plugin'
     Plug 'thosakwe/vim-flutter'
-    " 多彩括号
-    Plug 'luochen1990/rainbow'
-    Plug 'liuchengxu/vista.vim'
-    " rust
-    Plug 'rust-lang/rust.vim'
-
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -107,6 +108,5 @@ if index(g:plugin_group,'git') >=0
     Plug 'plasticboy/vim-markdown'
     Plug 'mzlogin/vim-markdown-toc'
 endif
-
 
 call plug#end()

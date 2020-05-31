@@ -24,13 +24,15 @@ let g:coc_global_extensions =
             " \ 'coc-prettier',
             " \ 'coc-pairs',
 						"
-" 回车完成代码块
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Use <Tab> navigate the completion list
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -70,8 +72,14 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> <space>k :call CocActionAsync('showSignatureHelp')<CR>
 
 " Remap for rename current word
-nmap <space>rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 " Highlight symbol under cursor on CursorHold
 set updatetime=100
 au CursorHold * silent call CocActionAsync('highlight')
