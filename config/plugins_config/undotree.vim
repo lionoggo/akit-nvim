@@ -1,7 +1,9 @@
 " ===
 " === Undotree
 " ===
-noremap L :UndotreeToggle<CR>
+" noremap L :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
+
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
