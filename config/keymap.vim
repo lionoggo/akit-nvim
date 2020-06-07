@@ -81,7 +81,7 @@ map <leader>s? z=
 " =>  编译运行
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 不能映射成r键,和vim自带的字符替换r冲突
-noremap F5 :call CompileRunGcc()<CR>
+noremap <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
@@ -120,6 +120,8 @@ func! CompileRunGcc()
         set splitbelow
         :sp
         :term go run .
+    elseif &filetype == 'rust'
+        CocCommand rust-analyzer.run
     endif
 endfunc
 
