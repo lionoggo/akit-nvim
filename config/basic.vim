@@ -124,7 +124,7 @@ set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\"
 set background=dark
 set t_Co=256
 try
-    colorscheme  desert256
+    colorscheme gruvbox
 catch
 endtry
 " 更清晰的错误标注：默认一片红色背景，语法高亮都被搞没了

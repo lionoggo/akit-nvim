@@ -1,20 +1,24 @@
 {
-	"languageserver": {
-		"dart": {
-			"command": "/Users/lionoggo/Library/Flutterw/dist/bd_1.12.13/bin/cache/dart-sdk/bin/dart",
-			"args": [
-				"/Users/lionoggo/Library/Flutterw/dist/bd_1.12.13/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
-				"--lsp"
-			],
-			"filetypes": ["dart"],
-			"disableDynamicRegister": true,
-			"trace.server": "verbose"
-		},
-		"bash": {
-			"command": "bash-language-server",
-			"args": ["start"],
-			"filetypes": ["sh"],
-			"ignoredRootPaths": ["~"]
-		}
-	}
+    "git.addGBlameToVirtualText": true,
+    "git.addGBlameToBufferVar": true,
+    "git.enableGutters": true,
+
+    "languageserver": {
+        "dart": {
+            "command": "/Users/lionoggo/Library/Ugo/sdk/bin/cache/dart-sdk/bin/dart",
+            "args": [
+                "/Users/lionoggo/Library/Ugo/sdk/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
+                "--lsp"
+            ],
+            "filetypes": ["dart"],
+            "disableDynamicRegister": true,
+            "trace.server": "verbose"
+        },
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        }
+    }
 }
