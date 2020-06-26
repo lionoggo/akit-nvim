@@ -19,11 +19,11 @@ command! -nargs=1 LoadScript exec 'source '.s:home.'/'.'<args>'
 " 加载基础配置
 LoadScript basic.vim
 
-" 加载filetype
- LoadScript filetypes.vim
-
 " 加载按键映射配置
 LoadScript keymap.vim
+
+" 加载themes
+ LoadScript themes.vim
 
 " 加载插件
 LoadScript plugin.vim
