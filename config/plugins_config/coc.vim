@@ -84,3 +84,5 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 set updatetime=100
 au CursorHold * silent call CocActionAsync('highlight')
 au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
