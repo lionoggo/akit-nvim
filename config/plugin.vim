@@ -11,7 +11,7 @@ endif
 " => 分组加载插件
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('g:plugin_group')
-    let g:plugin_group = ['basic','enhanced','git','filetypes']
+    let g:plugin_group = ['basic','enhanced','git','filetypes','themes','markdown']
 endif
 
 " 在~/.config/nvim/plugged下安装插件
@@ -71,13 +71,20 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if index(g:plugin_group,'git') >=0
     Plug 'tpope/vim-fugitive'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
     " 在sign列中显示git diff情况:添加,修改或删除的行
     Plug 'airblade/vim-gitgutter'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     " NERDTree中显示git status的插件
     Plug 'Xuyuanp/nerdtree-git-plugin'
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => themes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if index(g:plugin_group,'themes') >=0
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'bling/vim-bufferline'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,12 +105,14 @@ if index(g:plugin_group,'filetypes') >=0
 
     " 其他语法文件
     Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
+    " Vim多语言包
+    Plug 'sheerun/vim-polyglot'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if index(g:plugin_group,'git') >=0
+if index(g:plugin_group,'markdown') >=0
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'mzlogin/vim-markdown-toc'
