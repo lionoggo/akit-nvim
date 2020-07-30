@@ -7,7 +7,7 @@ nmap <leader>w :w!<cr>
 " 选中全文
 " map <leader>sa ggVG
 " 快速打开init.vim配置
-noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+noremap <LEADER>rc :e ~/.nvim_runtime/config/basic.vim<CR>
 " undo
 nnoremap U <C-r>
 
@@ -110,8 +110,8 @@ func! CompileRunGcc()
         silent! exec "VimtexStop"
         silent! exec "VimtexCompile"
     elseif &filetype == 'dart'
-        CocCommand flutter.run -d iPhone\ 11\ Pro
-        CocCommand flutter.dev.openDevLog
+        CocCommand flutter.run
+        " CocCommand flutter.dev.openDevLog
     elseif &filetype == 'javascript'
         set splitbelow
         :sp
