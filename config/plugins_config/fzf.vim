@@ -30,3 +30,5 @@ command! BD call fzf#run(fzf#wrap({
 noremap <c-d> :BD<CR>
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+" 查找输入框在顶部
+let $FZF_DEFAULT_OPTS='--reverse'
