@@ -76,6 +76,8 @@ if index(g:plugin_group,'git') >=0
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     " NERDTree中显示git status的插件
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    " 分支管理
+    Plug 'stsewd/fzf-checkout.vim'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
