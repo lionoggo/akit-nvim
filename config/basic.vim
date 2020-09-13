@@ -51,6 +51,11 @@ if has("autocmd")
     au BufWritePre * %s/\s\+$//e
 endif
 
+" set search root directory for rg
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 备份设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,7 +92,8 @@ set list
 set showcmd
 " 水平切割窗口时,默认在右边显示新窗口
 set splitright
-set cmdheight=1
+" Give more space for displaying messages
+set cmdheight=2
 set hid
 " 延迟绘制（提升性能）
 set lazyredraw
