@@ -64,6 +64,11 @@ if index(g:plugin_group,'enhanced') >=0
     " Flutter
     Plug 'theniceboy/dart-vim-plugin'
     Plug 'thosakwe/vim-flutter'
+    " ctags生成tag
+    Plug 'universal-ctags/ctags'
+    " 底层利用ctags
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'skywind3000/asyncrun.vim'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
