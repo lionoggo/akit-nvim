@@ -1,21 +1,22 @@
-" let g:ale_linters = {
-"             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"             \   'asm': ['gcc'],
-"             \   'nasm': ['nasm'],
-"             \   'c': ['cppcheck', 'clang'],
-"             \   'cpp': ['cppcheck', 'clang'],
-"             \   'cmake': ['cmake-format'],
-"             \   'python': ['pylint', 'flake8'],
-"             \   'cuda': ['nvcc'],
-"             \   'go': ['gofmt'],
-"             \   'java': ['javac'],
-"             \   'javascript': ['eslint'],
-"             \   'shell': ['shell -n flag'],
-"             \   'lua': ['luac'],
-"             \   'yaml': ['prettier'],
-"             \   'latex': ['alex'],
-"             \   'vue': ['eslint'],
-"             \ }
+let g:ale_linters = {
+            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \   'asm': ['gcc'],
+            \   'nasm': ['nasm'],
+            \   'c': ['cppcheck', 'clang'],
+            \   'cpp': ['cppcheck', 'clang'],
+            \   'cmake': ['cmake-format'],
+            \   'python': ['pylint', 'flake8'],
+            \   'cuda': ['nvcc'],
+            \   'go': ['gofmt'],
+            \   'java': ['javac'],
+            \   'javascript': ['eslint'],
+            \   'shell': ['shell -n flag'],
+            \   'zsh': ['shell'],
+            \   'lua': ['luac'],
+            \   'yaml': ['prettier'],
+            \   'latex': ['alex'],
+            \   'vue': ['eslint'],
+            \ }
 "始终开启标志列
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
