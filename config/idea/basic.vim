@@ -173,3 +173,18 @@ map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Action配置(show all the provided acitons via :actionlist)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap \f : action ReformatCode <CR>
+nnoremap <C-A-l> :action ReformatCode<CR>
+
+nnoremap <Leader>su :action ShowUsages<CR>
+nnoremap <Leader>fu :action FindUsages<CR>
+
+" <C-P>
+nnoremap <C-P> :action ParameterInfo<CR>
+inoremap <C-P> <ESC>:action ParameterInfo<CR>a
+
+noremap <C-f> :action SearchEverywhere<CR>

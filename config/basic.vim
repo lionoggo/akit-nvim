@@ -28,7 +28,7 @@ endif
 " 禁用vi兼容模式
 set nocompatible
 " 开启功能键超时检测
-set ttimeout
+set timeout
 set timeoutlen=50
 " 操作历史设置
 set history=500
