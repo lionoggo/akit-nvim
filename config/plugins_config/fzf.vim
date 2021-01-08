@@ -1,10 +1,10 @@
 noremap <C-p> :Files<CR>
-" noremap <C-f> :Rg<CR>
+noremap <C-f> :Rg<CR>
 " noremap <C-h> :History<CR>
 " noremap <C-t> :BTags<CR>
 " noremap <C-l> :Lines<CR>
 " noremap <C-w> :Buffers<CR>
-" noremap <leader>; :History:<CR>
+noremap <leader>; :History:<CR>
 
 
 let g:fzf_preview_window = 'right:60%'
