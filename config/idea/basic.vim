@@ -4,8 +4,9 @@
 " 禁用vi兼容模式
 set nocompatible
 " 开启功能键超时检测
-set ttimeout
-set timeoutlen=50
+set timeout
+set timeoutlen=500
+set ttimeoutlen=10
 " 操作历史设置
 set history=500
 " 开启文件类型检测
