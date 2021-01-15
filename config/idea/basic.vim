@@ -7,6 +7,7 @@ set nocompatible
 set timeout
 set timeoutlen=500
 set ttimeoutlen=10
+
 " 操作历史设置
 set history=500
 " 开启文件类型检测
@@ -176,7 +177,7 @@ map <C-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Action配置(show all the provided acitons via :actionlist)
+" => Action配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap \f : action ReformatCode <CR>
 nnoremap <C-A-l> :action ReformatCode<CR>
@@ -189,3 +190,10 @@ nnoremap <C-P> :action ParameterInfo<CR>
 inoremap <C-P> <ESC>:action ParameterInfo<CR>a
 
 noremap <C-f> :action SearchEverywhere<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Idea Extension
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set keep-english-in-normal-and-restore-in-insert
+
