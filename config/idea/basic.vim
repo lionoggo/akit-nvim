@@ -124,9 +124,9 @@ set tw=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 " 快速保存,使用<leader>w
-nmap <leader>w :w!<cr>
+nmap <Leader>w :w!<cr>
 
-noremap <LEADER>rc :e ~/.nvim_runtime/idea.vim<CR>
+noremap <Leader>rc :e ~/.nvim_runtime/idea.vim<CR>
 " undo
 nnoremap U <C-r>
 
@@ -179,17 +179,36 @@ map <silent> <leader><cr> :noh<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Action配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 代码修改
 nnoremap \f : action ReformatCode <CR>
 nnoremap <C-A-l> :action ReformatCode<CR>
+nnoremap <Leader>js :action SurroundWith<CR>
 
 nnoremap <Leader>su :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
 " <C-P>
 nnoremap <C-P> :action ParameterInfo<CR>
-inoremap <C-P> <ESC>:action ParameterInfo<CR>a
+inoremap <C-P> <ESC>:action ParameterInfo<CR>
 
+" 搜索相关
 noremap <C-f> :action SearchEverywhere<CR>
+noremap <Leader>gc :action GotoClass<CR>
+noremap <Leader>ga :action GotoAction<CR>
+noremap <Leader>gf :action GotoFile<CR>
+
+" 窗口管理
+nnoremap <Leader>wf :action HideAllWindows<CR>
+nnoremap <Leader>wF :action ToggleFullScreen<CR>
+" nnoremap <Leader>w- :action VimWindowSplitHorizontal<CR>
+nnoremap <Leader>sp :action SplitHorizontally<CR>
+" nnoremap <Leader>/ :action VimWindowSplitHorizontal<CR>
+nnoremap <Leader>vsp :action SplitVertically<CR>
+
+" nnoremap <C-w>NextSplitter
+
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
