@@ -1,11 +1,13 @@
-noremap <C-p> :Files<CR>
-noremap <C-f> :Rg<CR>
+nnoremap <C-p> :GFiles<CR>
+" map <C-f> :Files<CR>
+map <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+nnoremap <leader>m :Marks<CR>
 " noremap <C-h> :History<CR>
 " noremap <C-t> :BTags<CR>
 " noremap <C-l> :Lines<CR>
 " noremap <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
-
+" noremap <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
