@@ -90,6 +90,14 @@ set showcmd
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 窗口切换
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 搜索设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 搜索时忽略大小写
@@ -188,11 +196,12 @@ nnoremap <Leader>su :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
 " <C-P>
-nnoremap <C-P> :action ParameterInfo<CR>
-inoremap <C-P> <ESC>:action ParameterInfo<CR>
+inoremap <C-p> :action ParameterInfo<CR>
+inoremap <C-p> <ESC>:action ParameterInfo<CR>
 
 " 搜索相关
-noremap <C-f> :action SearchEverywhere<CR>
+noremap <C-p> :action SearchEverywhere<CR>
+noremap <C-f> :action FindInPath<CR>
 noremap <Leader>gc :action GotoClass<CR>
 noremap <Leader>ga :action GotoAction<CR>
 noremap <Leader>gf :action GotoFile<CR>
@@ -204,12 +213,6 @@ nnoremap <Leader>wF :action ToggleFullScreen<CR>
 nnoremap <Leader>sp :action SplitHorizontally<CR>
 " nnoremap <Leader>/ :action VimWindowSplitHorizontal<CR>
 nnoremap <Leader>vsp :action SplitVertically<CR>
-
-" nnoremap <C-w>NextSplitter
-
-
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Idea Extension
