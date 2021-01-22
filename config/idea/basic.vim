@@ -219,10 +219,11 @@ nnoremap <Leader>vsp :action SplitVertically<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ideaVimExtention
 set keep-english-in-normal-and-restore-in-insert
+
 " AceJump
 " Press `f` to activate AceJump
 map f :action AceAction<CR>
 " Press `F` to activate Target Mode
 map F :action AceTargetAction<CR>
 " Press `g` to activate Line Mode
-map g :action AceLineAction<CR>
+" map g :action AceLineAction<CR>
