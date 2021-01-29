@@ -29,7 +29,8 @@ endif
 set nocompatible
 " 开启功能键超时检测
 set timeout
-set timeoutlen=50
+set timeoutlen=1000
+set ttimeoutlen=100
 " 操作历史设置
 set history=500
 " 开启文件类型检测
