@@ -1,1 +1,1 @@
-nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gb :GBranches<CR>
