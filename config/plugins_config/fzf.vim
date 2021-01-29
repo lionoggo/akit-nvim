@@ -1,7 +1,7 @@
 nnoremap <C-p> :GFiles<CR>
 " map <C-f> :Files<CR>
 map <leader>b :Buffers<CR>
-nnoremap <leader>g :Rg<CR>
+nnoremap <leader>f :Rg<CR>
 nnoremap <leader>m :Marks<CR>
 " noremap <C-h> :History<CR>
 " noremap <C-t> :BTags<CR>
