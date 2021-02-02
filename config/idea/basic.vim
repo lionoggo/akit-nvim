@@ -207,14 +207,18 @@ noremap <Leader>ga :action GotoAction<CR>
 noremap <Leader>gf :action GotoFile<CR>
 
 " 窗口管理
+nnoremap <Leader>ww :action WindowMenu<CR>
 nnoremap <Leader>wf :action HideAllWindows<CR>
-nnoremap <Leader>wF :action ToggleFullScreen<CR>
+" nnoremap <Leader>wF :action ToggleFullScreen<CR>
+nnoremap <Leader>ws :action HideSideWindows<CR>
+nnoremap <Leader>wl :action JumpToLastWindow<CR>
 " nnoremap <Leader>w- :action VimWindowSplitHorizontal<CR>
 nnoremap <Leader>sp :action SplitHorizontally<CR>
 " nnoremap <Leader>/ :action VimWindowSplitHorizontal<CR>
 nnoremap <Leader>vsp :action SplitVertically<CR>
 
 " Vcs&Git配置
+nnoremap <Leader>gg :action Git.Menu<CR>
 nnoremap <Leader>gb :action Git.Branches<CR>
 nnoremap <Leader>glf :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <Leader>gls :action Vcs.ShowHistoryForBlock<CR>
