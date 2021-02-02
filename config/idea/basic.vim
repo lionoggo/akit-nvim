@@ -188,7 +188,7 @@ map <silent> <leader><cr> :noh<cr>
 " => Action配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码修改
-nnoremap \f : action ReformatCode <CR>
+nnoremap \f :action ReformatCode <CR>
 nnoremap <C-A-l> :action ReformatCode<CR>
 nnoremap <Leader>js :action SurroundWith<CR>
 
@@ -213,6 +213,11 @@ nnoremap <Leader>wF :action ToggleFullScreen<CR>
 nnoremap <Leader>sp :action SplitHorizontally<CR>
 " nnoremap <Leader>/ :action VimWindowSplitHorizontal<CR>
 nnoremap <Leader>vsp :action SplitVertically<CR>
+
+" Vcs&Git配置
+nnoremap <Leader>gb :action Git.Branches<CR>
+nnoremap <Leader>glf :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <Leader>gls :action Vcs.ShowHistoryForBlock<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Idea Plugin
