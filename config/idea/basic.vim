@@ -187,24 +187,29 @@ map <silent> <leader><cr> :noh<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Action配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 代码修改
+" coding
 nnoremap \f :action ReformatCode <CR>
 nnoremap <C-A-l> :action ReformatCode<CR>
-nnoremap <Leader>js :action SurroundWith<CR>
+nnoremap <Leader>cs :action SurroundWith<CR>
+nnoremap <Leader>cc :action CommentByLineComment<CR>
 
-nnoremap <Leader>su :action ShowUsages<CR>
-nnoremap <Leader>fu :action FindUsages<CR>
+nnoremap <Leader>rn :action RenameElement<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
 
-" <C-P>
 inoremap <C-p> :action ParameterInfo<CR>
 inoremap <C-p> <ESC>:action ParameterInfo<CR>
 
-" 搜索相关
-noremap <C-p> :action SearchEverywhere<CR>
-noremap <C-f> :action FindInPath<CR>
-noremap <Leader>gc :action GotoClass<CR>
-noremap <Leader>ga :action GotoAction<CR>
-noremap <Leader>gf :action GotoFile<CR>
+" code view
+nnoremap <C-p> :action SearchEverywhere<CR>
+nnoremap <C-f> :action FindInPath<CR>
+
+nnoremap <Leader>gc :action GotoClass<CR>
+nnoremap <Leader>ga :action GotoAction<CR>
+nnoremap <Leader>gf :action GotoFile<CR>
+nnoremap <Leader>gi :action GotoImplementation<CR>
+
+nnoremap <Leader>su :action ShowUsages<CR>
+nnoremap <Leader>fu :action FindUsages<CR>
 
 " 窗口管理
 nnoremap <Leader>ww :action WindowMenu<CR>
@@ -222,6 +227,11 @@ nnoremap <Leader>gg :action Git.Menu<CR>
 nnoremap <Leader>gb :action Git.Branches<CR>
 nnoremap <Leader>glf :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <Leader>gls :action Vcs.ShowHistoryForBlock<CR>
+
+"Debugger
+nnoremap <Leader>dd :action ChooseDebugConfiguration<CR>
+nnoremap <Leader>ba :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>bv :action ViewBreakpoints<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Idea Plugin
