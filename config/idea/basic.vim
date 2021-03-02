@@ -198,6 +198,7 @@ nnoremap <Leader>rf :action RenameFile<CR>
 
 inoremap <C-p> :action ParameterInfo<CR>
 inoremap <C-p> <ESC>:action ParameterInfo<CR>
+nnoremap <silent> K :action QuickJavaDoc<CR>
 
 " code view
 nnoremap <C-p> :action SearchEverywhere<CR>
