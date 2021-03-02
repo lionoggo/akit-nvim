@@ -1,4 +1,4 @@
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
@@ -14,4 +14,5 @@ let NERDTreeShowLineNumbers=1
 
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
+" show path of current file
 map <leader>nf :NERDTreeFind<cr>
