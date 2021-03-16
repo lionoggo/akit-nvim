@@ -69,6 +69,7 @@ if index(g:plugin_group,'enhanced') >=0
     " 底层利用ctags
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/asyncrun.vim'
+    Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -91,7 +92,8 @@ endif
 if index(g:plugin_group,'themes') >=0
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'bling/vim-bufferline'
+    " Plug 'bling/vim-bufferline'
+     Plug 'ryanoasis/vim-devicons'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
