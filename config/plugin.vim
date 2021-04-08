@@ -41,6 +41,8 @@ if index(g:plugin_group,'basic') >=0
     Plug 'terryma/vim-smooth-scroll'
     " vim启动界面
     Plug 'liuchengxu/vista.vim'
+    " 查看启动时间
+    Plug 'dstein64/vim-startuptime', {'on':'StartupTime'}
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,6 +72,9 @@ if index(g:plugin_group,'enhanced') >=0
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/asyncrun.vim'
     Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+    " 笔记插件，支持markdown
+    Plug 'vimwiki/vimwiki'
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,7 +98,7 @@ if index(g:plugin_group,'themes') >=0
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     " Plug 'bling/vim-bufferline'
-     Plug 'ryanoasis/vim-devicons'
+    Plug 'ryanoasis/vim-devicons'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
