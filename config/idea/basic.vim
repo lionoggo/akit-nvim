@@ -187,23 +187,26 @@ map <silent> <leader><cr> :noh<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Action配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" coding
-nnoremap \f :action ReformatCode <CR>
+" Reformat
+nnoremap \f :action ReformatCode<CR>
+vnoremap \f :action ReformatCode<CR>
 nnoremap <C-A-l> :action ReformatCode<CR>
+nnoremap <Leader>oi :action OptimizeImports<CR>
+" Code
 nnoremap <Leader>cs :action SurroundWith<CR>
 nnoremap <Leader>cc :action CommentByLineComment<CR>
-
-nnoremap <Leader>rn :action RenameElement<CR>
-nnoremap <Leader>rf :action RenameFile<CR>
+nnoremap <Leader>cg :action Generate<CR>
 
 inoremap <C-p> :action ParameterInfo<CR>
 inoremap <C-p> <ESC>:action ParameterInfo<CR>
 nnoremap <silent> K :action QuickJavaDoc<CR>
-
-" code view
+" Rename
+nnoremap <Leader>rn :action RenameElement<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
+" search
 nnoremap <C-p> :action SearchEverywhere<CR>
 nnoremap <C-f> :action FindInPath<CR>
-
+" code view
 nnoremap <Leader>gc :action GotoClass<CR>
 nnoremap <Leader>ga :action GotoAction<CR>
 nnoremap <Leader>gf :action GotoFile<CR>
@@ -212,7 +215,11 @@ nnoremap <Leader>gi :action GotoImplementation<CR>
 nnoremap <Leader>su :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
-" 窗口管理
+nnoremap <silent> <Leader>tt :action FileStructurePopup<CR>
+nnoremap <silent> <Leader>nn :action ActivateProjectToolWindow<CR>
+nnoremap <Leader>s :action RecentFiles<CR>
+
+" window
 nnoremap <Leader>ww :action WindowMenu<CR>
 nnoremap <Leader>wf :action HideAllWindows<CR>
 " nnoremap <Leader>wF :action ToggleFullScreen<CR>
@@ -222,6 +229,9 @@ nnoremap <Leader>wl :action JumpToLastWindow<CR>
 nnoremap <Leader>sp :action SplitHorizontally<CR>
 " nnoremap <Leader>/ :action VimWindowSplitHorizontal<CR>
 nnoremap <Leader>vsp :action SplitVertically<CR>
+
+" Terminal
+nnoremap <Leader>' :action ActivateTerminalToolWindow<CR>
 
 " Vcs&Git配置
 nnoremap <Leader>gg :action Git.Menu<CR>
