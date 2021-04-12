@@ -1,4 +1,5 @@
 nnoremap gca :Gcommit -a -v<CR>
+nnoremap gc : Gcommit -v<CR>
 nnoremap gb :Gblame<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gp :Nrun git push<CR>
