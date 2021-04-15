@@ -141,6 +141,7 @@ if has('multi_byte')
     set fileencoding=utf-8
     " 打开文件时自动尝试下面顺序的编码
     set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
+    set termencoding=utf-8
 endif
 " 折叠设置
 if has('folding')
@@ -363,3 +364,25 @@ endfunc
 set tabline=%!Vim_NeatTabLine()
 set guitablabel=%{Vim_NeatGuiTabLabel()}
 set guitabtooltip=%{Vim_NeatGuiTabTip()}
+
+" 以下内容来自韦大的配置
+" 文件搜索和补全时忽略下面的扩展名
+set suffixes=.bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class
+"stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib
+set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
+" MacOSX/Linux
+set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz
+set wildignore+=*DS_Store*,*.ipch
+set wildignore+=*.gem
+set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/.rbenv/**
+set wildignore+=*/.nx/**,*.app,*.git,.git
+set wildignore+=*.wav,*.mp3,*.ogg,*.pcm
+set wildignore+=*.mht,*.suo,*.sdf,*.jnlp
+set wildignore+=*.chm,*.epub,*.pdf,*.mobi,*.ttf
+set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
+set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
+set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
+set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
+set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
