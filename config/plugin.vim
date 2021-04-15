@@ -43,6 +43,7 @@ if index(g:plugin_group,'basic') >=0
     Plug 'liuchengxu/vista.vim'
     " 查看启动时间
     Plug 'dstein64/vim-startuptime', {'on':'StartupTime'}
+    " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -74,7 +75,7 @@ if index(g:plugin_group,'enhanced') >=0
     Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
     " 笔记插件，支持markdown
     Plug 'vimwiki/vimwiki'
-
+    Plug 'skywind3000/vim-terminal-help'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
