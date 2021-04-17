@@ -2,7 +2,7 @@ set updatetime=100
 
 let g:coc_global_extensions =
       \ [
-      \ 'coc-python',
+      \ 'coc-pyright',
       \ 'coc-tsserver',
       \ 'coc-java',
       \ 'coc-vimtex',
@@ -54,8 +54,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gN <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
 
 " 定义跳转
 nmap <silent> gd <Plug>(coc-definition)
