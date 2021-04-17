@@ -34,4 +34,5 @@ function! common#common#init() abort
     let g:polyglot_disabled = []
     " wiki笔记根目录
     let g:vimwiki_path = $HOME . '/Documents/wiki/'
+    let g:ale_disable_lsp = 1
 endfunction

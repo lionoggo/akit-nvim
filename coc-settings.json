@@ -3,7 +3,7 @@
     "git.addGBlameToBufferVar": true,
     "git.enableGutters": true,
 
-    "jedi.enable": true,
+    "jedi.enable": false,
     "jedi.startupMessage": false,
     "jedi.markupKindPreferred": "plaintext",
     "jedi.trace.server": "off",
@@ -111,7 +111,7 @@
     "diagnostic.warningSign": "▲",
     "diagnostic.infoSign": "●",
     "diagnostic.hintSign": "●",
-    "diagnostic.displayByAle": false,
+    "diagnostic.displayByAle": true,
     "diagnostic.maxWindowHeight": 10,
     "languageserver": {
         "dart": {

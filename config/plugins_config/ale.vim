@@ -42,7 +42,8 @@ let g:ale_cpp_ccls_init_options = {
                   \   },
                   \ }
 let g:ale_completion_enabled = 1
-
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
 " 快捷键
 nmap gd :ALEGoToDefinition<cr>
 nmap gr :ALEFindReferences<cr>
