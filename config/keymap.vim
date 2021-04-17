@@ -113,9 +113,10 @@ func! CompileRunGcc()
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
-        set splitbelow
-        :sp
-        :term python3 %
+        " set splitbelow
+        " :sp
+        " :term python3 %
+        :AsyncRun -raw python3 %
     elseif &filetype == 'html'
         silent! exec "!".g:mkdp_browser." % &"
     elseif &filetype == 'markdown'
@@ -139,6 +140,8 @@ func! CompileRunGcc()
     endif
 endfunc
 
+" F10 open/close Quickfix
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
