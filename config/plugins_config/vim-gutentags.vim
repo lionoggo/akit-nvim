@@ -5,7 +5,7 @@ let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
 let g:gutentags_ctags_tagfile = '.tags'
 
 " 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
-let s:vim_tags = expand('~/.config/tags')
+let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 " 检测 ~/.config/tags 不存在就新建 "
 if !isdirectory(s:vim_tags)
