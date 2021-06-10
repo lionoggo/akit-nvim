@@ -217,6 +217,7 @@ nnoremap <Leader>fu :action FindUsages<CR>
 
 nnoremap <silent> <Leader>tt :action FileStructurePopup<CR>
 nnoremap <silent> <Leader>nn :action ActivateProjectToolWindow<CR>
+nnoremap <silent> <leader>nf :action SelectInProjectView<CR>
 nnoremap <Leader>s :action RecentFiles<CR>
 
 " window
