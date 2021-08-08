@@ -76,6 +76,7 @@
     },
 
     "coc.preferences.extensionUpdateCheck": "daily",
+    "coc.preferences.hoverTarget": "float",
     "suggest.acceptSuggestionOnCommitCharacter": true,
     "suggest.timeout": 5000,
     "suggest.noselect": true,
@@ -143,6 +144,14 @@
                 }
             }
 
+        },
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"]
         }
+    },
+    "go.goplsOptions ":{
+        "completeUnimported": true,
     }
 }

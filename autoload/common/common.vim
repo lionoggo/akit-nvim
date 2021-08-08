@@ -35,4 +35,5 @@ function! common#common#init() abort
     " wiki笔记根目录
     let g:vimwiki_path = $HOME . '/Documents/wiki/'
     let g:ale_disable_lsp = 1
+    let g:go_bin_path = $HOME."/go/bin"
 endfunction

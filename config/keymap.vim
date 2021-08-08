@@ -132,9 +132,10 @@ func! CompileRunGcc()
         :sp
         :term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
     elseif &filetype == 'go'
-        set splitbelow
-        :sp
-        :term go run .
+        GoRun %
+        " set splitbelow
+        " :sp
+        " :term go run %
     elseif &filetype == 'rust'
         CocCommand rust-analyzer.run
     endif
