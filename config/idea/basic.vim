@@ -196,21 +196,25 @@ nnoremap <Leader>oi :action OptimizeImports<CR>
 nnoremap <Leader>cs :action SurroundWith<CR>
 nnoremap <Leader>cc :action CommentByLineComment<CR>
 nnoremap <Leader>cg :action Generate<CR>
+" in edit mode, press leader will print ',', so it not work
+" nnoremap <Leader>v :action IntroduceVariable<CR>
 
-inoremap <C-p> :action ParameterInfo<CR>
-inoremap <C-p> <ESC>:action ParameterInfo<CR>
+" in macos, Cmd+P: show ParameterInfo
+" inoremap <C-p> :action ParameterInfo<CR>
+" inoremap <C-p> <ESC>:action ParameterInfo<CR>
+"
 nnoremap <silent> K :action QuickJavaDoc<CR>
 " Rename
-nnoremap <Leader>rn :action RenameElement<CR>
-nnoremap <Leader>rf :action RenameFile<CR>
+nnoremap <Leader>n :action RenameElement<CR>
+nnoremap <Leader>nf :action RenameFile<CR>
 " search
 nnoremap <C-p> :action SearchEverywhere<CR>
 nnoremap <C-f> :action FindInPath<CR>
 " code view
-nnoremap <Leader>gc :action GotoClass<CR>
-nnoremap <Leader>ga :action GotoAction<CR>
-nnoremap <Leader>gf :action GotoFile<CR>
-nnoremap <Leader>gi :action GotoImplementation<CR>
+nnoremap gc :action GotoClass<CR>
+nnoremap ga :action GotoAction<CR>
+nnoremap gf :action GotoFile<CR>
+nnoremap gi :action GotoImplementation<CR>
 
 nnoremap <Leader>su :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
