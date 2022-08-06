@@ -129,6 +129,7 @@ if index(g:plugin_group,'filetypes') >=0
     " Flutter
     Plug 'theniceboy/dart-vim-plugin'
     Plug 'thosakwe/vim-flutter'
+    Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
