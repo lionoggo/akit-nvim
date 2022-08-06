@@ -64,9 +64,6 @@ if index(g:plugin_group,'enhanced') >=0
     Plug 'w0rp/ale'
     " 代码片段库,结合coc-snippets
     Plug 'honza/vim-snippets'
-    " Flutter
-    Plug 'theniceboy/dart-vim-plugin'
-    Plug 'thosakwe/vim-flutter'
     " ctags生成tag
     Plug 'universal-ctags/ctags'
     " 底层利用ctags
@@ -76,6 +73,7 @@ if index(g:plugin_group,'enhanced') >=0
     " 笔记插件，支持markdown
     Plug 'vimwiki/vimwiki'
     Plug 'skywind3000/vim-terminal-help'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -127,6 +125,10 @@ if index(g:plugin_group,'filetypes') >=0
     Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
     " Vim多语言包
     Plug 'sheerun/vim-polyglot'
+
+    " Flutter
+    Plug 'theniceboy/dart-vim-plugin'
+    Plug 'thosakwe/vim-flutter'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
