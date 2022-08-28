@@ -50,3 +50,10 @@ nmap gr :ALEFindReferences<cr>
 
 nmap K :ALEHover<cr>
 
+" only display sign, hide it's background(when we use gruvbox themes)
+" link: https://github.com/dense-analysis/ale/issues/349
+" highlight ALEErrorSign guibg=yellow guifg=red ctermbg=NONE ctermfg=red
+" highlight ALEInfoSign guibg=214 guifg=orange  ctermfg=214 ctermbg=NONE
+highlight ALEInfoSign ctermfg=109 ctermbg=NONE guifg=#83a598 guibg=#3c3836
+highlight ALEErrorSign ctermfg=167 ctermbg=NONE guifg=#fb4934 guibg=#3c3836
+highlight ALEWarningSign ctermfg=214 ctermbg=NONE guifg=#fabd2f guibg=#3c3836
