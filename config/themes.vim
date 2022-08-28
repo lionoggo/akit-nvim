@@ -17,7 +17,7 @@ autocmd! colorscheme gruvbox call s:patch_lucius_colors()
 set background=dark
 set t_Co=256
 try
-    colorscheme gruvbox8
+    colorscheme gruvbox1
 catch
 endtry
 " 更清晰的错误标注：默认一片红色背景，语法高亮都被搞没了
@@ -48,4 +48,3 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
 " 修正补全目录(悬浮提示)的色彩：默认太难看
 " hi! Pmenu guibg=gray guifg=black ctermbg=gray ctermfg=black
 " hi! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
-
