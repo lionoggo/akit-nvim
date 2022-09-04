@@ -1,4 +1,4 @@
-function! common#common#init() abort
+function! common#common#init(rootPath) abort
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => 环境判断
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,12 +23,17 @@ function! common#common#init() abort
         let g:isGUI = 0
     endif
     " vimrc所在根目录
-    let g:vim_root_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-    echo "====="
-    echo g:vim_root_path
+    let g:vim_root_path =a:rootPath
+    echo "==============vim root path=================="
+    " echo g:vim_root_path
+    " echo s:home
+    echo "================================"
+
     " 配置所在根目录
     let g:config_root_path = g:vim_root_path.'/config/'
+    echo "==============config root path=================="
     echo g:config_root_path
+    echo "================================"
     " 插件配置所在目录
     let g:plugins_config_root_path = g:config_root_path . "plugins_config/"
     " 有些插件有额外的配置
@@ -48,6 +53,7 @@ function! common#common#init() abort
     let g:undo_dir = g:cache_root_path . 'undo/'
     echo "undo dir"
     echo g:undo_dir
+    let g:tags=g:cache_root_path . 'tags/'
 
     let g:os = systemlist('uname -s')[0]
     let g:arch = systemlist('uname -m')[0]
@@ -74,4 +80,3 @@ function! common#common#init() abort
     let g:go_bin_path = $HOME."/go/bin"
 endfunction
 
-call common#common#init()

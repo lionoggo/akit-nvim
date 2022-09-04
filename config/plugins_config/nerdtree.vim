@@ -1,9 +1,9 @@
 "-----------------------------------------------------------------------------
 " 全局配置
 "-----------------------------------------------------------------------------
-" let NERDTreeMinimalUI = 1 " 最小化显示，不显示问号
-" let NERDTreeDirArrows = 1
-" let NERDChristmasTree = 1
+let NERDTreeMinimalUI = 1 " 最小化显示，不显示问号
+let NERDTreeDirArrows = 1
+let NERDChristmasTree = 1
 
 let g:NERDTreeWinPos = "left"
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -80,9 +80,6 @@ augroup vime_nerdtree_group
     autocmd!
     " 只有一个窗口和nerdtree的时候，退出窗口即退出vim而不保留nerdtree
     autocmd BUFENTER * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-    " " 避免在nerdtree中打开文件
-    " autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
     autocmd FileType nerdtree nmap <buffer> <CR> bb
 

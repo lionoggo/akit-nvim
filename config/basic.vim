@@ -5,15 +5,16 @@
 set nocompatible
 " 开启功能键超时检测
 set timeout
-set timeoutlen=1000
-set ttimeoutlen=100
+set timeoutlen=500
+set ttimeoutlen=10
+" 更新时间100ms 默认4000ms 写入swap的时间
+set updatetime=100
 " 操作历史设置
 set history=500
 " 开启文件类型检测
 filetype plugin on
 filetype indent on
 " 启用自动加载
-set autoread
 " 使用系统剪贴板
 set clipboard+=unnamedplus
 au FocusGained,BufEnter * checktime
@@ -37,17 +38,23 @@ endif
 " => 备份设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
+set nowritebackup
+set shortmess+=c
+set sessionoptions+=globals
+" 文件在外部被修改过，重新读入
+" 自动写回
+set autowrite
 set nowb
 set noswapfile
 
-silent !mkdir -p ~/.nvim_runtime/tmp/backup
-silent !mkdir -p ~/.nvim_runtime/tmp/undo
-" silent !mkdir -p ~/.nvim_runtime/tmp/sessions
-set backupdir=~/.nvim_runtime/tmp/backup,.
-set directory=~/.nvim_runtime/tmp/backup,.
+" silent !mkdir -p ~/.nvim_runtime/tmp/backup
+" set backupdir=~/.nvim_runtime/tmp/backup,.
+" set directory=~/.nvim_runtime/tmp/backup,.
+"
 if has('persistent_undo')
+    " call mkdir(g:undo_dir,'p')
+    let &undodir =expand(g:undo_dir,':p')
     set undofile
-    set undodir=~/.nvim_runtime/tmp/undo,.
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,7 +131,8 @@ if has('folding')
     " 允许代码折叠
     set foldenable
     " 代码折叠默认使用缩进
-    set fdm=indent
+    " set fdm=indent
+    set fdm=syntax
     " 默认打开所有缩进
     set foldlevel=99
 endif

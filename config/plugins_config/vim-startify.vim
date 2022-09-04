@@ -15,14 +15,14 @@ let g:startify_custom_header = [
 let g:startify_files_number = 6
 let g:startify_dir_number = 6
 " session
-" let g:startify_session_dir = g:session_dir
-" " 自动保存，注意，只会自动保存载入的session
-" let g:startify_session_persistence = 1
-" " 保存session之前自动执行命令
-" let g:startify_session_before_save = [
-"     \ 'echo "Cleaning up before saving.."',
-"     \ 'silent! NERDTreeTabsClose'
-"     \ ]
+let g:startify_session_dir = g:session_dir
+" 自动保存，注意，只会自动保存载入的session
+let g:startify_session_persistence = 1
+" 保存session之前自动执行命令
+let g:startify_session_before_save = [
+    \ 'echo "Cleaning up before saving.."',
+    \ 'silent! NERDTreeTabsClose'
+    \ ]
 "
 " bookmarks 书签
 " let g:startify_bookmarks = [
@@ -33,10 +33,10 @@ let g:startify_dir_number = 6
 
 " command 命令
 let g:startify_commands = [
-    \ {'u': ['插件更新', 'PlugUpdate']},
-    \ {'t': ['打开终端', 'terminal']},
-    \ {'w': ['笔记列表', 'VimwikiIndex']},
-    \ {'s': ['启动时间', 'StartupTime']},
+    \ {'u': ['Update Plugin', 'PlugUpdate']},
+    \ {'t': ['Open Termimal', 'terminal']},
+    \ {'w': ['Vim Wiki', 'VimwikiIndex']},
+    \ {'s': ['Vim Startup', 'StartupTime']},
     \ ]
 
 let g:startify_lists = [
@@ -47,4 +47,4 @@ let g:startify_lists = [
        \ { 'type': 'commands',  'header': ['        Commands']       },
        \ ]
 
-noremap <leader>s <esc>:Startify<cr>
+noremap <leader>e <esc>:Startify<cr>
