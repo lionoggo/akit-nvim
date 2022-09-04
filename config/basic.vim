@@ -1,28 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => 环境判断
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 判断系统类型
-if(has('win32') || has('win64'))
-    let g:isWIN = 1
-    let g:isMAC = 0
-else
-    if system('uname') =~ 'Darwin'
-        let g:isWIN = 0
-        let g:isMAC = 1
-    else
-        let g:isWIN = 0
-        let g:isMAC = 0
-    endif
-endif
-
-" 判断是是否处于GUI界面
-if has('gui_running')
-    let g:isGUI = 1
-else
-    let g:isGUI = 0
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 基本设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 禁用vi兼容模式
@@ -43,9 +19,9 @@ set clipboard+=unnamedplus
 au FocusGained,BufEnter * checktime
 " :W sudo保存文件
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-"记住退出位置
+"记住退出位置,并移动到屏幕中央
 if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif | normal! zvzz
 endif
 " 保存时,删除尾随空格
 if has("autocmd")
