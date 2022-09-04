@@ -129,7 +129,11 @@ endfunction
 
 function! common#functions#OpenFileUsingSystemApp(filePath) abort
     " 使用系统应用打开当前文件
-    exec 'silent !xdg-open ' . fnameescape(a:filePath) . ' > /dev/null'
+    if g:isMAC == 1
+        exec 'silent !open ' . fnameescape(a:filePath) . ' > /dev/null'
+    else
+        exec 'silent !xdg-open ' . fnameescape(a:filePath) . ' > /dev/null'
+    endif
 endfunction
 
 function! common#functions#ModeType() abort
