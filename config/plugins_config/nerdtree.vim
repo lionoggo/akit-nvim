@@ -37,14 +37,23 @@ let g:NERDTreeMapJumpPrevSibling = 'K'
 " 快捷键
 "-----------------------------------------------------------------------------
 
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
+" map <leader>nn :NERDTreeToggle<cr>
+map <silent> <leader>nn :call NERDOpen(':NERDTreeToggle')<cr>
 " show path of current file
-map <leader>nf :NERDTreeFind<cr>
+map <silent> <leader>nf :call NERDOpen(':NERDTreeFind')<cr>
+" map <leader>nb :NERDTreeFromBookmark<Space>
 
 "-----------------------------------------------------------------------------
 " 一些函数
 "-----------------------------------------------------------------------------
+function! NERDOpen(cmd) abort
+    if (winnr('$') == 1 && exists("b:NERDTree"))
+        return
+    else
+        exe a:cmd
+    endif
+endfunction
+
 function! s:NERDTreeCustomCROpen(node) abort
     let l:newRoot = a:node.GetSelected()
 
