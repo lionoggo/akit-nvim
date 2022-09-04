@@ -8,6 +8,7 @@ let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t'
 let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#tabline#exclude_buffers = ["[defx]", "!", "vimfiler", "nnn", "vista"]
 
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
@@ -21,3 +22,13 @@ let g:airline_highlighting_cache = 1
 let g:airline#extensions#tabline#show_tab_type = 0
 
 
+" 显示窗口号
+function! WindowNumber(...)
+	let builder = a:1
+	let context = a:2
+	call builder.add_section('airline_b', '%{tabpagewinnr(tabpagenr())}')
+	return 0
+endfunction
+
+" call airline#add_statusline_func('WindowNumber')
+" call airline#add_inactive_statusline_func('WindowNumber')
