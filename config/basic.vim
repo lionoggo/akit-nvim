@@ -1,51 +1,28 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => 环境判断
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 判断系统类型
-if(has('win32') || has('win64'))
-    let g:isWIN = 1
-    let g:isMAC = 0
-else
-    if system('uname') =~ 'Darwin'
-        let g:isWIN = 0
-        let g:isMAC = 1
-    else
-        let g:isWIN = 0
-        let g:isMAC = 0
-    endif
-endif
-
-" 判断是是否处于GUI界面
-if has('gui_running')
-    let g:isGUI = 1
-else
-    let g:isGUI = 0
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 基本设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 禁用vi兼容模式
 set nocompatible
 " 开启功能键超时检测
 set timeout
-set timeoutlen=1000
-set ttimeoutlen=100
+set timeoutlen=500
+set ttimeoutlen=10
+" 更新时间100ms 默认4000ms 写入swap的时间
+set updatetime=100
 " 操作历史设置
 set history=500
 " 开启文件类型检测
 filetype plugin on
 filetype indent on
 " 启用自动加载
-set autoread
 " 使用系统剪贴板
 set clipboard+=unnamedplus
 au FocusGained,BufEnter * checktime
 " :W sudo保存文件
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-"记住退出位置
+"记住退出位置,并移动到屏幕中央
 if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif | normal! zvzz
 endif
 " 保存时,删除尾随空格
 if has("autocmd")
@@ -61,17 +38,23 @@ endif
 " => 备份设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
+set nowritebackup
+set shortmess+=c
+set sessionoptions+=globals
+" 文件在外部被修改过，重新读入
+" 自动写回
+set autowrite
 set nowb
 set noswapfile
 
-silent !mkdir -p ~/.nvim_runtime/tmp/backup
-silent !mkdir -p ~/.nvim_runtime/tmp/undo
-" silent !mkdir -p ~/.nvim_runtime/tmp/sessions
-set backupdir=~/.nvim_runtime/tmp/backup,.
-set directory=~/.nvim_runtime/tmp/backup,.
+" silent !mkdir -p ~/.nvim_runtime/tmp/backup
+" set backupdir=~/.nvim_runtime/tmp/backup,.
+" set directory=~/.nvim_runtime/tmp/backup,.
+"
 if has('persistent_undo')
+    " call mkdir(g:undo_dir,'p')
+    let &undodir =expand(g:undo_dir,':p')
     set undofile
-    set undodir=~/.nvim_runtime/tmp/undo,.
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -148,7 +131,8 @@ if has('folding')
     " 允许代码折叠
     set foldenable
     " 代码折叠默认使用缩进
-    set fdm=indent
+    " set fdm=indent
+    set fdm=syntax
     " 默认打开所有缩进
     set foldlevel=99
 endif

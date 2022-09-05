@@ -1,31 +1,47 @@
+" coc插件安装目录
+let g:coc_data_home = g:cache_root_path . 'coc/'
+" coc-settings.json所在目录
+let g:coc_config_home = g:other_config_root_path
 set updatetime=100
 
 let g:coc_global_extensions =
       \ [
-      \ 'coc-pyright',
-      \ 'coc-tsserver',
-      \ 'coc-java',
-      \ 'coc-vimtex',
-      \ 'coc-html',
-      \ 'coc-css',
-      \ 'coc-yaml',
-      \ 'coc-json',
-      \ 'coc-emmet',
-      \ 'coc-snippets',
-      \ 'coc-emoji',
-      \ 'coc-highlight',
-      \ 'coc-git',
-      \ 'coc-sh',
-      \ 'coc-go',
-      \ 'coc-explorer',
-      \ ]
+        \ 'coc-pyright',
+        \ 'coc-tsserver',
+        \ 'coc-java',
+        \ 'coc-vimtex',
+        \ 'coc-html',
+        \ 'coc-css',
+        \ 'coc-yaml',
+        \ 'coc-json',
+        \ 'coc-emmet',
+        \ 'coc-snippets',
+        \ 'coc-emoji',
+        \ 'coc-highlight',
+        \ 'coc-git',
+        \ 'coc-sh',
+        \ 'coc-go',
+        \ 'coc-explorer',
+        \ ]
 " \ 'coc-ccls',
 " \ 'coc-java',
 """""""
 " \ 'coc-diagnostic',
 " \ 'coc-prettier',
 " \ 'coc-pairs',
-"
+
+" 卸载不在列表中的插件
+function! s:uninstall_unused_coc_extensions() abort
+  if has_key(g:, 'coc_global_extensions')
+    for e in keys(json_decode(join(readfile(expand(g:coc_data_home . '/extensions/package.json')), "\n"))['dependencies'])
+      if index(g:coc_global_extensions, e) < 0
+        execute 'CocUninstall ' . e
+      endif
+    endfor
+  endif
+endfunction
+autocmd User CocNvimInit call s:uninstall_unused_coc_extensions()
+
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
