@@ -24,16 +24,8 @@ function! common#common#init(rootPath) abort
     endif
     " vimrc所在根目录
     let g:vim_root_path =a:rootPath
-    echo "==============vim root path=================="
-    " echo g:vim_root_path
-    " echo s:home
-    echo "================================"
-
     " 配置所在根目录
     let g:config_root_path = g:vim_root_path.'/config/'
-    echo "==============config root path=================="
-    echo g:config_root_path
-    echo "================================"
     " 插件配置所在目录
     let g:plugins_config_root_path = g:config_root_path . "plugins_config/"
     " 有些插件有额外的配置
@@ -41,32 +33,22 @@ function! common#common#init(rootPath) abort
 
     " vim插件、缓存等数据根目录
     let g:cache_root_path = $HOME . '/.cache/vim/'
-    echo "cache dir "
-    echo g:cache_root_path
     " vim 插件安装目录
     let g:plugins_install_path = g:cache_root_path . 'plugins/'
-    echo "plugin install dir"
-    echo g:plugins_install_path
     " session 保存目录
     let g:session_dir = g:cache_root_path . 'sessions/'
     " 撤销记录目录
     let g:undo_dir = g:cache_root_path . 'undo/'
-    echo "undo dir"
-    echo g:undo_dir
     let g:tags=g:cache_root_path . 'tags/'
 
     let g:os = systemlist('uname -s')[0]
     let g:arch = systemlist('uname -m')[0]
-    echo g:os
-    echo g:arch
 
     " tmux配置文件目录
     let g:tmux_config_path = $HOME . '/.tmux.conf'
 
     " 脚本目录
     let g:scripts_root_path = g:vim_root_path . "/scripts/"
-    echo "scripts dir"
-    echo g:scripts_root_path
     " wiki笔记根目录
     let g:vimwiki_path = $HOME . '/Documents/wiki/'
 
