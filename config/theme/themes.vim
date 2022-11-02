@@ -17,7 +17,8 @@ autocmd! colorscheme gruvbox call s:patch_lucius_colors()
 set background=dark
 set t_Co=256
 try
-    colorscheme gruvbox1
+    " colorscheme gruvbox1
+    colorscheme molokai
 catch
 endtry
 " 更清晰的错误标注：默认一片红色背景，语法高亮都被搞没了

@@ -60,5 +60,6 @@ function! common#common#init(rootPath) abort
     " ale work with coc: The easiest way to get both plugins to work together is to configure coc.nvim to send diagnostics to ALE, so ALE controls how all problems are presented to you, and to disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion.
     let g:ale_disable_lsp = 1
     let g:go_bin_path = $HOME."/go/bin"
+    let g:molokai_original = 1
 endfunction
 
