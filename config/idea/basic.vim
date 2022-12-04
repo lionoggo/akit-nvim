@@ -6,7 +6,7 @@ set nocompatible
 " 开启功能键超时检测
 set timeout
 set timeoutlen=500
-set ttimeoutlen=10
+set ttimeoutlen=50
 
 " 操作历史设置
 set history=500
@@ -187,44 +187,59 @@ map <silent> <leader><cr> :noh<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Action配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Reformat
+" Code Format
 nnoremap \f :action ReformatCode<CR>
 vnoremap \f :action ReformatCode<CR>
 nnoremap <C-A-l> :action ReformatCode<CR>
-nnoremap <Leader>oi :action OptimizeImports<CR>
-" Code
-nnoremap <Leader>cs :action SurroundWith<CR>
+" Code Write
 nnoremap <Leader>cc :action CommentByLineComment<CR>
-nnoremap <Leader>cg :action Generate<CR>
+nnoremap <Leader>im :action ImplementMethods<CR>
+
+" Code Refactor
+nnoremap <Leader>oi :action OptimizeImports<CR>
+nnoremap <Leader>sw :action SurroundWith<CR>
+
+nnoremap <Leader>g :action Generate<CR>
+nnoremap <Leader>if :action IntroduceField<CR>
+nnoremap <Leader>ic :action IntroduceConstant<CR>
+nnoremap <Leader>iv :action IntroduceVariable<CR>
+nnoremap <Leader>em :action ExtractMethod<CR>
+nnoremap <Leader>re :action RenameElement<CR>
 " in edit mode, press leader will print ',', so it not work
 " nnoremap <Leader>v :action IntroduceVariable<CR>
 
 " in macos, Cmd+P: show ParameterInfo
 " inoremap <C-p> :action ParameterInfo<CR>
 " inoremap <C-p> <ESC>:action ParameterInfo<CR>
-"
-nnoremap <silent> K :action QuickJavaDoc<CR>
-" Rename
-nnoremap <Leader>n :action RenameElement<CR>
-nnoremap <Leader>nf :action RenameFile<CR>
+
+
+" Search
+" 和打开文件列表有冲突
+" nnoremap <Leader>nf :action RenameFile<CR>
 " search
 nnoremap <C-p> :action SearchEverywhere<CR>
 nnoremap <C-f> :action FindInPath<CR>
-" code view
+
+" Code view
+nnoremap <silent> K :action QuickJavaDoc<CR>
+
 nnoremap gc :action GotoClass<CR>
 nnoremap ga :action GotoAction<CR>
 nnoremap gf :action GotoFile<CR>
 nnoremap gi :action GotoImplementation<CR>
-
 nnoremap <Leader>su :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
 nnoremap <silent> <Leader>tt :action FileStructurePopup<CR>
-nnoremap <silent> <Leader>nn :action ActivateProjectToolWindow<CR>
 nnoremap <silent> <leader>nf :action SelectInProjectView<CR>
-nnoremap <Leader>s :action RecentFiles<CR>
+
+" Code Debugger
+nnoremap <Leader>dd :action ChooseDebugConfiguration<CR>
+nnoremap <Leader>ba :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>bv :action ViewBreakpoints<CR>
 
 " window
+nnoremap <silent> <Leader>nn :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>ww :action WindowMenu<CR>
 nnoremap <Leader>wf :action HideAllWindows<CR>
 " nnoremap <Leader>wF :action ToggleFullScreen<CR>
@@ -236,6 +251,7 @@ nnoremap <Leader>sp :action SplitHorizontally<CR>
 nnoremap <Leader>vsp :action SplitVertically<CR>
 
 " Terminal
+" In normal vim, use alt+= to trigger
 nnoremap <Leader>' :action ActivateTerminalToolWindow<CR>
 
 " Vcs&Git配置
@@ -244,10 +260,6 @@ nnoremap <Leader>gb :action Git.Branches<CR>
 nnoremap <Leader>glf :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <Leader>gls :action Vcs.ShowHistoryForBlock<CR>
 
-"Debugger
-nnoremap <Leader>dd :action ChooseDebugConfiguration<CR>
-nnoremap <Leader>ba :action ToggleLineBreakpoint<CR>
-nnoremap <Leader>bv :action ViewBreakpoints<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Idea Plugin

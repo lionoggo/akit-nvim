@@ -6,7 +6,8 @@ set nocompatible
 " 开启功能键超时检测
 set timeout
 set timeoutlen=500
-set ttimeoutlen=10
+" configed by alt.vim
+" set ttimeoutlen=10
 " 更新时间100ms 默认4000ms 写入swap的时间
 set updatetime=100
 " 操作历史设置

@@ -1,5 +1,5 @@
 
-" vim中可以使用alt按键
+" vim中可以使用alt按键: https://skywind3000.com/blog/archives/2021/
 if has('nvim')
     finish
 endif
