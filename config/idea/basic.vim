@@ -200,11 +200,17 @@ nnoremap <Leader>oi :action OptimizeImports<CR>
 nnoremap <Leader>sw :action SurroundWith<CR>
 
 nnoremap <Leader>g :action Generate<CR>
+vnoremap <Leader>g :action Generate<CR>
 nnoremap <Leader>if :action IntroduceField<CR>
+vnoremap <Leader>if :action IntroduceField<CR>
 nnoremap <Leader>ic :action IntroduceConstant<CR>
+vnoremap <Leader>ic :action IntroduceConstant<CR>
 nnoremap <Leader>iv :action IntroduceVariable<CR>
+vnoremap <Leader>iv :action IntroduceVariable<CR>
 nnoremap <Leader>em :action ExtractMethod<CR>
+vnoremap <Leader>em :action ExtractMethod<CR>
 nnoremap <Leader>re :action RenameElement<CR>
+vnoremap <Leader>re :action RenameElement<CR>
 " in edit mode, press leader will print ',', so it not work
 " nnoremap <Leader>v :action IntroduceVariable<CR>
 
