@@ -222,17 +222,24 @@ vnoremap <Leader>re :action RenameElement<CR>
 " Search
 " 和打开文件列表有冲突
 " nnoremap <Leader>nf :action RenameFile<CR>
-" search
-nnoremap <C-p> :action SearchEverywhere<CR>
-nnoremap <C-f> :action FindInPath<CR>
 
 " Code view
 nnoremap <silent> K :action QuickJavaDoc<CR>
 
-nnoremap gc :action GotoClass<CR>
-nnoremap ga :action GotoAction<CR>
-nnoremap gf :action GotoFile<CR>
-nnoremap gi :action GotoImplementation<CR>
+" go to somewhere ( g in normal mode for go somewhere )
+nnoremap ga :<C-u>action GotoAction<CR>
+nnoremap gb :<C-u>action JumpToLastChange<CR>
+nnoremap gc :<C-u>action GotoClass<CR>
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap gs :<C-u>action GotoSuperMethod<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gf :<C-u>action GotoFile<CR>
+nnoremap gm :<C-u>action GotoSymbol<CR>
+" search
+nnoremap <C-p> :action SearchEverywhere<CR>
+nnoremap <C-f> :action FindInPath<CR>
+" nnoremap gp :action FindInPath<CR>
+
 nnoremap <Leader>su :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
@@ -248,6 +255,8 @@ nnoremap <Leader>bv :action ViewBreakpoints<CR>
 nnoremap <silent> <Leader>nn :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>ww :action WindowMenu<CR>
 nnoremap <Leader>wf :action HideAllWindows<CR>
+" make editor full screen
+nnoremap <Leader>ef :action MaximizeEditorInSplit<CR>
 " nnoremap <Leader>wF :action ToggleFullScreen<CR>
 nnoremap <Leader>ws :action HideSideWindows<CR>
 nnoremap <Leader>wl :action JumpToLastWindow<CR>
@@ -255,6 +264,9 @@ nnoremap <Leader>wl :action JumpToLastWindow<CR>
 nnoremap <Leader>sp :action SplitHorizontally<CR>
 " nnoremap <Leader>/ :action VimWindowSplitHorizontal<CR>
 nnoremap <Leader>vsp :action SplitVertically<CR>
+
+cmap q action CloseEditor
+
 
 " Terminal
 " In normal vim, use alt+= to trigger
@@ -265,6 +277,8 @@ nnoremap <Leader>gg :action Git.Menu<CR>
 nnoremap <Leader>gb :action Git.Branches<CR>
 nnoremap <Leader>glf :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <Leader>gls :action Vcs.ShowHistoryForBlock<CR>
+" use t as prefix to toggle something
+nnoremap ta :action Annotation<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
