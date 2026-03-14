@@ -1,0 +1,110 @@
+" ==============================================
+" IdeaVim Configuration (aligned with Neovim keymaps)
+" ==============================================
+let mapleader = ","
+
+" ===== Settings =====
+set ideajoin
+set idearefactormode=keep
+set number
+set relativenumber
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set clipboard+=unnamedplus
+set scrolloff=5
+set showmode
+set notimeout
+
+" ===== IdeaVim Plugin Emulation =====
+set surround
+set commentary
+set highlightedyank
+set NERDTree
+set which-key
+set keep-english-in-normal-and-restore-in-insert
+
+" ===== Core Keymaps (shared with Neovim) =====
+nmap <leader>w :w!<cr>
+nnoremap U <C-r>
+nnoremap j gj
+nnoremap k gk
+nnoremap Y y$
+nnoremap vv ^vg_
+vnoremap < <gv
+vnoremap > >gv
+nnoremap <leader>; m'A;<ESC>`'
+nnoremap <BS> :nohl<cr>
+nnoremap <leader>q :action CloseEditor<cr>
+
+" ===== Window Navigation (Ctrl + direction) =====
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" ===== Buffer/Tab Navigation =====
+nnoremap <Tab> :action NextTab<cr>
+nnoremap <S-Tab> :action PreviousTab<cr>
+
+" ===== Code Navigation (g prefix) =====
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gD :action GotoTypeDeclaration<cr>
+nnoremap gr :action FindUsages<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gs :action GotoSuperMethod<cr>
+nnoremap K :action QuickJavaDoc<cr>
+nnoremap ]d :action GotoNextError<cr>
+nnoremap [d :action GotoPreviousError<cr>
+
+" ===== Code Actions (leader prefix) =====
+nnoremap <leader>rn :action RenameElement<cr>
+nnoremap <leader>ca :action ShowIntentionActions<cr>
+nnoremap <leader>fm :action ReformatCode<cr>
+vnoremap <leader>fm :action ReformatCode<cr>
+
+" ===== Refactoring =====
+nnoremap <leader>em :action ExtractMethod<cr>
+vnoremap <leader>em :action ExtractMethod<cr>
+nnoremap <leader>iv :action IntroduceVariable<cr>
+vnoremap <leader>iv :action IntroduceVariable<cr>
+nnoremap <leader>ic :action IntroduceConstant<cr>
+nnoremap <leader>if :action IntroduceField<cr>
+nnoremap <leader>oi :action OptimizeImports<cr>
+
+" ===== Navigation =====
+nnoremap <leader>f :action GotoFile<cr>
+nnoremap <leader><leader> :action FindInPath<cr>
+nnoremap <leader>e :action ActivateProjectToolWindow<cr>
+nnoremap <leader>nn :action SelectInProjectView<cr>
+nnoremap <leader>o :action FileStructurePopup<cr>
+nnoremap <C-p> :action SearchEverywhere<cr>
+
+" ===== Space as Auxiliary Leader =====
+nnoremap <Space>f :action GotoFile<cr>
+nnoremap <Space>s :action FindInPath<cr>
+nnoremap <Space>b :action Switcher<cr>
+nnoremap <Space>r :action RecentFiles<cr>
+nnoremap <Space>h :action GotoSymbol<cr>
+nnoremap <Space>d :action ActivateProblemsViewToolWindow<cr>
+
+" Git
+nnoremap <Space>gg :action Git.Menu<cr>
+nnoremap <Space>gb :action Annotate<cr>
+nnoremap <Space>gc :action Vcs.ShowTabbedFileHistory<cr>
+nnoremap <Space>gs :action Vcs.Show.Local.Changes<cr>
+
+" Toggle
+nnoremap <Space>tt :action QuickChangeScheme<cr>
+nnoremap <Space>tz :action ToggleDistractionFreeMode<cr>
+
+" ===== Terminal & Git =====
+nnoremap <leader>' :action ActivateTerminalToolWindow<cr>
+nnoremap <leader>gg :action Git.Menu<cr>
+nnoremap <leader>gb :action Git.Branches<cr>
+
+" ===== Debug =====
+nnoremap <leader>dd :action ChooseDebugConfiguration<cr>
+nnoremap <leader>ba :action ToggleLineBreakpoint<cr>
+nnoremap <leader>bv :action ViewBreakpoints<cr>
