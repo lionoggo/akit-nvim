@@ -63,10 +63,29 @@ ensure_link() {
     ok "$label installed: $link_path → $target"
 }
 
+check_formatters() {
+    local missing=()
+
+    command -v prettierd &>/dev/null || command -v prettier &>/dev/null || missing+=("prettierd  (JSON/YAML/JS/TS)  →  :MasonInstall prettierd  或  npm install -g @fsouza/prettierd")
+    command -v stylua    &>/dev/null || missing+=("stylua     (Lua)             →  :MasonInstall stylua     或  brew install stylua")
+    command -v black     &>/dev/null || missing+=("black      (Python)          →  :MasonInstall black      或  pip install black")
+    command -v rustfmt   &>/dev/null || missing+=("rustfmt    (Rust)            →  随 Rust 工具链自带，运行 rustup component add rustfmt")
+
+    if [ ${#missing[@]} -gt 0 ]; then
+        echo ""
+        warn "以下格式化器未安装，,fm 格式化功能将不可用："
+        for item in "${missing[@]}"; do
+            echo -e "  ${YELLOW}•${NC} $item"
+        done
+        echo -e "  ${BLUE}提示：${NC}进入 Neovim 后也可通过 :Mason 统一安装"
+    fi
+}
+
 install_nvim() {
     info "Installing Neovim configuration..."
     mkdir -p "$HOME/.config"
     ensure_link "$NVIM_CONFIG" "$NVIM_RUNTIME" "Neovim"
+    check_formatters
 }
 
 install_idea() {

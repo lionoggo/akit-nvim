@@ -37,8 +37,8 @@ map("c", "<C-l>", "<End>", { desc = "End of line" })
 -- Clear search highlight
 map("n", "<BS>", "<cmd>nohl<cr>", { desc = "Clear search highlight" })
 
--- Close window (use <leader>q instead of bare q, to preserve macro recording)
-map("n", "<leader>q", "<cmd>close<cr>", { desc = "Close window" })
+-- Quit (use <leader>q instead of bare q, to preserve macro recording)
+map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 
 -- Quick open config
 map("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<cr>", { desc = "Edit config" })

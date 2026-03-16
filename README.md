@@ -13,7 +13,7 @@
 - **fzf**（`brew install fzf`，模糊搜索引擎）
 - **lazygit**（`brew install lazygit`，可选，Git TUI）
 - **macism**（`brew tap laishulu/homebrew && brew install macism`，可选，中文输入法自动切换）
-- **Node.js**（可选，markdown-preview.nvim 需要）
+- **Node.js**（可选，markdown-preview.nvim 需要；prettierd 也依赖 Node.js）
 - **MacTeX**（可选，LaTeX 编辑需要）
 - **Skim.app**（可选，LaTeX PDF 预览及 SyncTeX 正反向搜索）
 
@@ -27,6 +27,15 @@ nvim
 首次启动会自动安装 lazy.nvim 及所有插件，等待完成后重启即可。
 
 进入 Neovim 后运行 `:Mason` 可管理 LSP 服务器、格式化器、Linter 的安装。
+
+**格式化器**（需在 Mason 中手动安装，或通过系统包管理器安装）：
+
+| 格式化器 | 文件类型 | Mason 安装 | 系统安装 |
+|----------|----------|------------|----------|
+| prettierd | JSON / YAML / JS / TS | `:MasonInstall prettierd` | `npm install -g @fsouza/prettierd` |
+| stylua | Lua | `:MasonInstall stylua` | `brew install stylua` |
+| black | Python | `:MasonInstall black` | `pip install black` |
+| rustfmt | Rust | — | 随 Rust 工具链自带 |
 
 ### VSCode
 
@@ -229,6 +238,7 @@ init.lua
 |------|------|
 | `s` | Flash 跳转 — 输入目标字符，标签跳转 |
 | `S` | Flash Treesitter — 按语法结构选择 |
+| `f`/`F`/`t`/`T` | Flash 增强版行内跳转 — 默认扩展为多行，可见区域内高亮所有匹配并标签跳转 |
 | `sa{motion}{char}` | 添加 surround（如 `saiw"` 给单词加双引号） |
 | `sd{char}` | 删除 surround（如 `sd"` 删除双引号） |
 | `sr{old}{new}` | 替换 surround（如 `sr"'` 双引号换单引号） |
