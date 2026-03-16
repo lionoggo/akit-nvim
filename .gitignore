@@ -1,0 +1,4 @@
+# Runtime artifacts
+.tags
+Session.vim
+data/
