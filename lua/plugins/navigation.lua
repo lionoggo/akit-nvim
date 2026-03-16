@@ -44,6 +44,19 @@ return {
       { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
       { "<leader>nn", "<cmd>Neotree reveal<cr>", desc = "Reveal in file tree" },
     },
+    -- Also load when nvim opens a directory (replaces netrw)
+    init = function()
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = vim.api.nvim_create_augroup("neotree_start_directory", { clear = true }),
+        callback = function(args)
+          if vim.fn.isdirectory(vim.api.nvim_buf_get_name(args.buf)) == 1 then
+            -- Delete the directory buffer, then open neo-tree
+            vim.api.nvim_buf_delete(args.buf, { force = true })
+            require("neo-tree.command").execute({ action = "focus", dir = vim.fn.expand("%:p:h") })
+          end
+        end,
+      })
+    end,
     opts = {
       filesystem = {
         follow_current_file = { enabled = true },

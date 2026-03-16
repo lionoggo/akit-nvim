@@ -8,7 +8,11 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     ft = { "markdown" },
-    opts = {},
+    opts = {
+      win_options = {
+        conceallevel = { rendered = 2, default = 0 },
+      },
+    },
   },
 
   -- Browser-based live preview with synchronized scrolling
