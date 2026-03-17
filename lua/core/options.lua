@@ -23,7 +23,7 @@ opt.showcmd = true
 opt.splitright = true
 opt.splitbelow = true
 opt.cmdheight = 1
-opt.lazyredraw = true
+
 opt.showmatch = true
 opt.matchtime = 2
 opt.wildmenu = true

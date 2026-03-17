@@ -1,57 +1,55 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    main = "nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "lua", "python", "javascript", "typescript", "go", "rust",
-        "java", "c", "cpp", "html", "css", "json", "yaml", "toml",
-        "markdown", "markdown_inline", "bash", "vim", "vimdoc",
-        "dockerfile", "sql",
-      },
-      highlight = {
-        enable = true,
-        -- Disable for LaTeX: vimtex's syntax highlighting is more accurate
-        disable = { "latex" },
-      },
-      indent = { enable = true },
-    },
-  },
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+    config = function()
+      require("nvim-treesitter").setup()
 
-  -- Treesitter text objects: select/move by function, class, parameter
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = { "BufReadPost", "BufNewFile" },
-    main = "nvim-treesitter-textobjects",
-    opts = {
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = { query = "@function.outer", desc = "outer function" },
-          ["if"] = { query = "@function.inner", desc = "inner function" },
-          ["ac"] = { query = "@class.outer", desc = "outer class" },
-          ["ic"] = { query = "@class.inner", desc = "inner class" },
-          ["aa"] = { query = "@parameter.outer", desc = "outer parameter" },
-          ["ia"] = { query = "@parameter.inner", desc = "inner parameter" },
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = {
-          ["]f"] = { query = "@function.outer", desc = "Next function" },
-          ["]c"] = { query = "@class.outer", desc = "Next class" },
-        },
-        goto_prev_start = {
-          ["[f"] = { query = "@function.outer", desc = "Prev function" },
-          ["[c"] = { query = "@class.outer", desc = "Prev class" },
-        },
-      },
-    },
+      -- Textobjects
+      require("nvim-treesitter-textobjects").setup({
+        select = { lookahead = true },
+        move = { set_jumps = true },
+      })
+
+      local ts_select = require("nvim-treesitter-textobjects.select")
+      local ts_move = require("nvim-treesitter-textobjects.move")
+
+      local select_maps = {
+        ["af"] = { query = "@function.outer", desc = "outer function" },
+        ["if"] = { query = "@function.inner", desc = "inner function" },
+        ["ac"] = { query = "@class.outer", desc = "outer class" },
+        ["ic"] = { query = "@class.inner", desc = "inner class" },
+        ["aa"] = { query = "@parameter.outer", desc = "outer parameter" },
+        ["ia"] = { query = "@parameter.inner", desc = "inner parameter" },
+      }
+      for key, mapping in pairs(select_maps) do
+        vim.keymap.set({ "x", "o" }, key, function()
+          ts_select.select_textobject(mapping.query)
+        end, { desc = mapping.desc })
+      end
+
+      local move_next = {
+        ["]f"] = { query = "@function.outer", desc = "Next function" },
+        ["]c"] = { query = "@class.outer", desc = "Next class" },
+      }
+      for key, mapping in pairs(move_next) do
+        vim.keymap.set({ "n", "x", "o" }, key, function()
+          ts_move.goto_next_start(mapping.query)
+        end, { desc = mapping.desc })
+      end
+
+      local move_prev = {
+        ["[f"] = { query = "@function.outer", desc = "Prev function" },
+        ["[c"] = { query = "@class.outer", desc = "Prev class" },
+      }
+      for key, mapping in pairs(move_prev) do
+        vim.keymap.set({ "n", "x", "o" }, key, function()
+          ts_move.goto_previous_start(mapping.query)
+        end, { desc = mapping.desc })
+      end
+    end,
   },
 
   -- Show current code context at top of screen

@@ -58,6 +58,7 @@ return {
       })
     end,
     opts = {
+      open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy", "snacks_dashboard" },
       close_if_last_window = true,
       filesystem = {
         follow_current_file = { enabled = true },
