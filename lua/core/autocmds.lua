@@ -88,6 +88,27 @@ autocmd("FileType", {
   end,
 })
 
+-- Linux: warn if no clipboard provider is installed
+if vim.fn.has("linux") == 1 then
+  autocmd("VimEnter", {
+    group = augroup("ClipboardCheck", {}),
+    once = true,
+    callback = function()
+      local has_clip = vim.fn.executable("xclip") == 1
+        or vim.fn.executable("xsel") == 1
+        or vim.fn.executable("wl-copy") == 1
+      if not has_clip then
+        vim.notify(
+          "未检测到 xclip/xsel/wl-clipboard，系统剪贴板不可用\n"
+            .. "X11: sudo apt install xclip\n"
+            .. "Wayland: sudo apt install wl-clipboard",
+          vim.log.levels.WARN
+        )
+      end
+    end,
+  })
+end
+
 -- LaTeX: writing-friendly buffer settings
 autocmd("FileType", {
   group = augroup("LatexSettings", {}),

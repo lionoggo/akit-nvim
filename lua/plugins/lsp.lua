@@ -77,8 +77,20 @@ return {
               },
             })
           end,
-          -- LaTeX: texlab with Skim forward search
           ["texlab"] = function()
+            local forward_search = {}
+            if vim.fn.has("mac") == 1 then
+              forward_search = {
+                executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
+                args = { "%l", "%p", "%f" },
+              }
+            elseif vim.fn.executable("zathura") == 1 then
+              forward_search = {
+                executable = "zathura",
+                args = { "--synctex-forward", "%l:1:%f", "%p" },
+              }
+            end
+
             require("lspconfig").texlab.setup({
               capabilities = capabilities,
               settings = {
@@ -88,10 +100,7 @@ return {
                     args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
                     onSave = true,
                   },
-                  forwardSearch = {
-                    executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
-                    args = { "%l", "%p", "%f" },
-                  },
+                  forwardSearch = forward_search,
                 },
               },
             })
