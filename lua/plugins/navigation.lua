@@ -28,6 +28,11 @@ return {
         width = 0.85,
         preview = { layout = "vertical", vertical = "down:45%" },
       },
+      keymap = {
+        fzf = {
+          ["esc"] = "abort",
+        },
+      },
     },
   },
 
