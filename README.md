@@ -1,41 +1,104 @@
 # Neovim Configuration
 
-基于 Lua 的现代 Neovim 配置，支持 **Neovim standalone**、**VSCode-Neovim**、**IdeaVim** 三种环境。
+基于 Lua 的现代 Neovim 配置，支持 **macOS** 和 **Linux**（Ubuntu/Debian、Arch 等），适配 **Neovim standalone**、**VSCode-Neovim**、**IdeaVim** 三种环境。
+
+## 支持平台
+
+| 平台 | 状态 |
+|------|------|
+| macOS (Apple Silicon / Intel) | 完整支持 |
+| Ubuntu / Debian | 完整支持 |
+| Arch Linux | 完整支持 |
+| 其他 Linux 发行版 | 基本支持（需手动安装依赖） |
 
 ## 安装
 
 ### 前置依赖
 
-- **Neovim** >= 0.10
-- **Git**
-- [Nerd Font](https://www.nerdfonts.com/)（推荐 Hack Nerd Font，用于图标显示）
-- **ripgrep**（`brew install ripgrep`，用于全局文本搜索）
-- **fzf**（`brew install fzf`，模糊搜索引擎）
-- **lazygit**（`brew install lazygit`，可选，Git TUI）
-- **macism**（`brew tap laishulu/homebrew && brew install macism`，可选，中文输入法自动切换）
-- **Node.js**（可选，markdown-preview.nvim 需要；prettierd 也依赖 Node.js）
-- **MacTeX**（可选，LaTeX 编辑需要）
-- **Skim.app**（可选，LaTeX PDF 预览及 SyncTeX 正反向搜索）
+#### 通用依赖（所有平台）
+
+| 依赖 | 用途 | macOS | Ubuntu / Debian | Arch |
+|------|------|-------|-----------------|------|
+| **Neovim** >= 0.10 | 编辑器 | `brew install neovim` | [GitHub Releases](https://github.com/neovim/neovim/releases) AppImage | `pacman -S neovim` |
+| **Git** | 插件管理 | `brew install git` | `apt install git` | `pacman -S git` |
+| [**Nerd Font**](https://www.nerdfonts.com/) | 图标显示（推荐 Hack Nerd Font） | Homebrew Cask 或手动安装 | 手动安装 | `pacman -S ttf-hack-nerd` |
+| **ripgrep** | 全局文本搜索 | `brew install ripgrep` | `apt install ripgrep` | `pacman -S ripgrep` |
+| **fzf** | 模糊搜索引擎 | `brew install fzf` | `apt install fzf` | `pacman -S fzf` |
+| **Node.js** | markdown-preview、prettierd | `brew install node` | `apt install nodejs npm` | `pacman -S nodejs npm` |
+
+#### 平台特有依赖
+
+<details>
+<summary><b>macOS</b></summary>
+
+| 依赖 | 用途 | 安装 |
+|------|------|------|
+| im-select | 中文输入法自动切换 | `brew install im-select` |
+| lazygit | Git TUI（可选） | `brew install lazygit` |
+| MacTeX / BasicTeX | LaTeX 编辑（可选） | `brew install --cask mactex` |
+| Skim.app | LaTeX PDF 预览 + SyncTeX（可选） | `brew install --cask skim` |
+
+</details>
+
+<details>
+<summary><b>Ubuntu / Debian</b></summary>
+
+| 依赖 | 用途 | 安装 |
+|------|------|------|
+| fcitx5 或 ibus | 中文输入法自动切换 | `apt install fcitx5` |
+| xclip（X11）或 wl-clipboard（Wayland） | 系统剪贴板集成 | `apt install xclip` 或 `apt install wl-clipboard` |
+| lazygit | Git TUI（可选） | [GitHub Releases](https://github.com/jesseduffield/lazygit/releases) |
+| TeX Live | LaTeX 编辑（可选） | `apt install texlive-full` |
+| zathura | LaTeX PDF 预览 + SyncTeX（可选） | `apt install zathura zathura-pdf-poppler` |
+
+</details>
+
+<details>
+<summary><b>Arch Linux</b></summary>
+
+| 依赖 | 用途 | 安装 |
+|------|------|------|
+| fcitx5 或 ibus | 中文输入法自动切换 | `pacman -S fcitx5` |
+| xclip 或 wl-clipboard | 系统剪贴板集成 | `pacman -S xclip` 或 `pacman -S wl-clipboard` |
+| lazygit | Git TUI（可选） | `pacman -S lazygit` |
+| TeX Live | LaTeX 编辑（可选） | `pacman -S texlive-most` |
+| zathura | LaTeX PDF 预览 + SyncTeX（可选） | `pacman -S zathura zathura-pdf-poppler` |
+
+</details>
 
 ### Neovim
 
 ```bash
-git clone https://github.com/lionoggo/akit-nvim.git ~/.config/nvim
+# 1. 克隆配置到 ~/.nvim_runtime
+git clone https://github.com/lionoggo/akit-nvim.git ~/.nvim_runtime
+
+# 2. 运行安装脚本（自动创建 symlink + 检查系统依赖 + 检查格式化器）
+cd ~/.nvim_runtime && bash install.sh nvim
+
+# 3. 启动 Neovim（首次启动自动安装插件，等待完成后重启）
 nvim
 ```
 
-首次启动会自动安装 lazy.nvim 及所有插件，等待完成后重启即可。
+`install.sh` 会自动检测当前操作系统，检查所需依赖是否已安装，并给出对应平台的安装命令提示。
+
+**支持的 profile**：
+
+| 命令 | 说明 |
+|------|------|
+| `bash install.sh nvim` | Neovim standalone 配置 |
+| `bash install.sh idea` | IdeaVim 配置（.ideavimrc） |
+| `bash install.sh all` | 安装全部 |
 
 进入 Neovim 后运行 `:Mason` 可管理 LSP 服务器、格式化器、Linter 的安装。
 
 **格式化器**（需在 Mason 中手动安装，或通过系统包管理器安装）：
 
-| 格式化器 | 文件类型 | Mason 安装 | 系统安装 |
-|----------|----------|------------|----------|
-| prettierd | JSON / YAML / JS / TS | `:MasonInstall prettierd` | `npm install -g @fsouza/prettierd` |
-| stylua | Lua | `:MasonInstall stylua` | `brew install stylua` |
-| black | Python | `:MasonInstall black` | `pip install black` |
-| rustfmt | Rust | — | 随 Rust 工具链自带 |
+| 格式化器 | 文件类型 | Mason 安装 | macOS | Linux |
+|----------|----------|------------|-------|-------|
+| prettierd | JSON / YAML / JS / TS | `:MasonInstall prettierd` | `npm install -g @fsouza/prettierd` | 同左 |
+| stylua | Lua | `:MasonInstall stylua` | `brew install stylua` | `cargo install stylua` |
+| black | Python | `:MasonInstall black` | `pip install black` | 同左 |
+| rustfmt | Rust | — | 随 Rust 工具链自带 | 同左 |
 
 ### VSCode
 
@@ -43,7 +106,8 @@ nvim
 2. 在 VSCode `settings.json` 中指定 Neovim 路径：
    ```json
    {
-     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim"
+     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
    }
    ```
 3. 配置会自动加载 `~/.config/nvim/init.lua`，检测到 VSCode 环境后只启用键位映射，不加载插件。
@@ -51,7 +115,7 @@ nvim
 ### IdeaVim
 
 ```bash
-ln -sf ~/.config/nvim/.ideavimrc ~/.ideavimrc
+bash install.sh idea
 ```
 
 重启 JetBrains IDE 即可生效。
@@ -103,34 +167,34 @@ init.lua
 
 ### 插件一览
 
-| 类别 | 插件 | 用途 |
-|------|------|------|
-| 插件管理 | lazy.nvim | 插件管理器，支持懒加载、lockfile、profiler |
-| 主题 | catppuccin (默认), tokyonight, gruvbox-material, molokai | 可切换的多主题 |
-| 补全 | blink.cmp + friendly-snippets | 高性能补全引擎 + 代码片段 |
-| LSP | nvim-lspconfig + mason.nvim + mason-lspconfig | 语言服务协议 + 自动安装 |
-| 格式化 | conform.nvim | 异步代码格式化 |
-| 语法树 | nvim-treesitter + textobjects + context | 语义高亮、文本对象、上下文显示 |
-| 模糊搜索 | fzf-lua | 文件搜索、文本搜索、Buffer 切换等 |
-| 文件树 | neo-tree.nvim | 侧边文件浏览器 |
-| 代码大纲 | aerial.nvim | Treesitter 驱动的符号大纲 |
-| 状态栏 | lualine.nvim | 底部状态栏 |
-| Buffer 栏 | bufferline.nvim | 顶部 Buffer 标签栏 |
-| Git | gitsigns.nvim | 行内 Git 状态标记 |
-| Git TUI | lazygit (通过 snacks.nvim 终端) | 浮窗 Git 操作 |
-| 启动页 | snacks.nvim dashboard | 启动画面 |
-| 跳转 | flash.nvim | 两键快速跳转到任意位置 |
-| 环绕编辑 | mini.surround | 添加/删除/替换包裹符号 |
-| 自动配对 | mini.pairs | 自动补全括号引号 |
-| 键位提示 | which-key.nvim | 按键后弹出后续键位提示 |
-| 缩进线 | indent-blankline.nvim | 缩进参考线 |
-| 撤销树 | undotree | 可视化撤销历史 |
-| 输入法 | im-select.nvim + macism | 离开插入模式自动切英文，回来恢复中文 |
-| Markdown 渲染 | render-markdown.nvim | Buffer 内渲染标题、代码块、表格、勾选框 |
-| Markdown 预览 | markdown-preview.nvim | 浏览器实时预览，支持 KaTeX/Mermaid |
-| Markdown LSP | marksman (via mason) | 文档符号、链接跳转、补全、TOC |
-| LaTeX | vimtex | 编译、PDF 预览、SyncTeX、文本对象 |
-| LaTeX LSP | texlab (via mason) | 补全、诊断、跳转定义、格式化 |
+| 类别 | 插件 | 用途 | 平台 |
+|------|------|------|------|
+| 插件管理 | lazy.nvim | 插件管理器，支持懒加载、lockfile、profiler | 全平台 |
+| 主题 | catppuccin (默认), tokyonight, gruvbox-material, molokai | 可切换的多主题 | 全平台 |
+| 补全 | blink.cmp + friendly-snippets | 高性能补全引擎 + 代码片段 | 全平台 |
+| LSP | nvim-lspconfig + mason.nvim + mason-lspconfig | 语言服务协议 + 自动安装 | 全平台 |
+| 格式化 | conform.nvim | 异步代码格式化 | 全平台 |
+| 语法树 | nvim-treesitter + textobjects + context | 语义高亮、文本对象、上下文显示 | 全平台 |
+| 模糊搜索 | fzf-lua | 文件搜索、文本搜索、Buffer 切换等 | 全平台 |
+| 文件树 | neo-tree.nvim | 侧边文件浏览器 | 全平台 |
+| 代码大纲 | aerial.nvim | Treesitter 驱动的符号大纲 | 全平台 |
+| 状态栏 | lualine.nvim | 底部状态栏 | 全平台 |
+| Buffer 栏 | bufferline.nvim | 顶部 Buffer 标签栏 | 全平台 |
+| Git | gitsigns.nvim | 行内 Git 状态标记 | 全平台 |
+| Git TUI | lazygit (通过 snacks.nvim 终端) | 浮窗 Git 操作 | 全平台 |
+| 启动页 | snacks.nvim dashboard | 启动画面 | 全平台 |
+| 跳转 | flash.nvim | 两键快速跳转到任意位置 | 全平台 |
+| 环绕编辑 | mini.surround | 添加/删除/替换包裹符号 | 全平台 |
+| 自动配对 | mini.pairs | 自动补全括号引号 | 全平台 |
+| 键位提示 | which-key.nvim | 按键后弹出后续键位提示 | 全平台 |
+| 缩进线 | indent-blankline.nvim | 缩进参考线 | 全平台 |
+| 撤销树 | undotree | 可视化撤销历史 | 全平台 |
+| 输入法 | im-select.nvim | 离开插入模式自动切英文，回来恢复中文 | macOS: im-select, Linux: fcitx5-remote / ibus |
+| Markdown 渲染 | render-markdown.nvim | Buffer 内渲染标题、代码块、表格、勾选框 | 全平台 |
+| Markdown 预览 | markdown-preview.nvim | 浏览器实时预览，支持 KaTeX/Mermaid | 全平台 |
+| Markdown LSP | marksman (via mason) | 文档符号、链接跳转、补全、TOC | 全平台 |
+| LaTeX | vimtex | 编译、PDF 预览、SyncTeX、文本对象 | macOS: Skim.app, Linux: zathura |
+| LaTeX LSP | texlab (via mason) | 补全、诊断、跳转定义、格式化 | 全平台 |
 
 ## 键位映射
 
@@ -282,13 +346,21 @@ init.lua
 
 ### 中文输入法自动切换
 
-安装 macism 后自动生效，无需额外配置：
+安装对应平台的输入法工具后自动生效，无需额外配置：
 
-- **离开插入模式**：自动切换到英文输入法（ABC）
+- **离开插入模式**：自动切换到英文输入法
 - **进入插入模式**：自动恢复之前的输入法状态
 - 切换过程异步执行，不阻塞编辑
 
-> IdeaVim 通过内置的 `set keep-english-in-normal-and-restore-in-insert` 实现相同功能，无需 macism。
+| 平台 | 工具 | 安装 |
+|------|------|------|
+| macOS | im-select | `brew install im-select` |
+| Linux (fcitx5) | fcitx5-remote | `apt install fcitx5` / `pacman -S fcitx5` |
+| Linux (ibus) | ibus | `apt install ibus` / `pacman -S ibus` |
+
+> 插件会自动检测当前平台和可用的输入法后端，若未检测到则跳过加载，不会报错。
+>
+> IdeaVim 通过内置的 `set keep-english-in-normal-and-restore-in-insert` 实现相同功能，无需上述工具。
 
 ### Markdown 编辑
 
@@ -306,13 +378,23 @@ init.lua
 | 功能 | 说明 |
 |------|------|
 | 编译 | latexmk 持续编译，保存时自动触发 |
-| PDF 预览 | Skim.app，支持 SyncTeX 正反向搜索 |
-| 正向搜索 | 从源码跳转到 PDF 对应位置 |
-| 反向搜索 | 在 Skim 中点击 PDF 跳回源码 |
+| PDF 预览 | 自动检测可用查看器（见下表） |
+| 正向搜索 | 从源码跳转到 PDF 对应位置（需 SyncTeX 兼容查看器） |
+| 反向搜索 | 在 PDF 查看器中点击跳回源码 |
 | 补全 | texlab LSP 提供标签、引用、命令、环境补全 |
 | 文本对象 | `ie`/`ae` 环境、`ic`/`ac` 命令、`i$`/`a$` 数学公式（vimtex 提供） |
 
-> 反向搜索配置：Skim → 偏好设置 → 同步 → 预设选 "Custom"，命令填 `nvim`，参数填 `--headless -c "VimtexInverseSearch %line '%file'"`
+**PDF 查看器（按平台自动选择）**：
+
+| 平台 | 查看器 | SyncTeX 支持 | 安装 |
+|------|--------|-------------|------|
+| macOS | Skim.app | 正向 + 反向 | `brew install --cask skim` |
+| Linux（推荐） | zathura | 正向 + 反向 | `apt install zathura zathura-pdf-poppler` |
+| Linux（fallback） | xdg-open | 无 | 系统默认 |
+
+> **macOS 反向搜索配置**：Skim → 偏好设置 → 同步 → 预设选 "Custom"，命令填 `nvim`，参数填 `--headless -c "VimtexInverseSearch %line '%file'"`
+>
+> **Linux 反向搜索配置**：zathura 通过 SyncTeX 自动支持，无需额外配置。
 
 ## 配置定制
 
