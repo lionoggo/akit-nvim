@@ -189,6 +189,7 @@ init.lua
 | 键位提示 | which-key.nvim | 按键后弹出后续键位提示 | 全平台 |
 | 缩进线 | indent-blankline.nvim | 缩进参考线 | 全平台 |
 | 撤销树 | undotree | 可视化撤销历史 | 全平台 |
+| 翻译 | translate.nvim | 选中文本翻译为中文（Google 翻译） | 全平台 |
 | 输入法 | im-select.nvim | 离开插入模式自动切英文，回来恢复中文 | macOS: im-select, Linux: fcitx5-remote / ibus |
 | Markdown 渲染 | render-markdown.nvim | Buffer 内渲染标题、代码块、表格、勾选框 | 全平台 |
 | Markdown 预览 | markdown-preview.nvim | 浏览器实时预览，支持 KaTeX/Mermaid | 全平台 |
@@ -244,6 +245,8 @@ init.lua
 | `,bd` | 关闭当前 Buffer | 全部 |
 | `,bo` | 关闭其他 Buffer | 全部 |
 | `,qq` | 退出 Vim（带确认） | Neovim |
+| `,ts` | 翻译选中文本（浮窗显示） | Neovim |
+| `,tr` | 翻译并替换选中文本 | Neovim |
 | `,mp` | Markdown 浏览器预览 | Neovim |
 | `,?` | 显示全部键位 | Neovim |
 

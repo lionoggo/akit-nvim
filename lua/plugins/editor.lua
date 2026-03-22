@@ -47,6 +47,7 @@ return {
       spec = {
         { "<leader>b", group = "Buffer" },
         { "<leader>s", group = "Spell" },
+        { "<leader>t", group = "Translate" },
         { "<Space>g", group = "Git" },
         { "<Space>t", group = "Toggle" },
       },
