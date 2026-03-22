@@ -73,6 +73,11 @@ if not vim.g.vscode then
   map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Go to upper window" })
   map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Go to right window" })
 
+  -- Open current file with system default app (gX = "go eXternal" for current file)
+  map("n", "gX", function()
+    vim.ui.open(vim.fn.expand("%:p"))
+  end, { desc = "Open file with system app" })
+
   -- Window split (C-w + direction = split in that direction)
   -- Navigation is on <C-h/j/k/l>, so <C-w> prefix is free for splitting
   map("n", "<C-w>k", "<cmd>abo split<cr>", { desc = "Split above" })

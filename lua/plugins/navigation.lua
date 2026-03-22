@@ -63,6 +63,13 @@ return {
       })
     end,
     opts = {
+      commands = {
+        system_open = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+          vim.ui.open(path)
+        end,
+      },
       open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy", "snacks_dashboard" },
       close_if_last_window = true,
       filesystem = {
@@ -76,6 +83,7 @@ return {
         width = 35,
         mappings = {
           ["<space>"] = "none", -- don't conflict with Space leader
+          ["gx"] = "system_open",
         },
       },
     },

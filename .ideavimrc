@@ -55,6 +55,8 @@ nnoremap gD :action GotoTypeDeclaration<cr>
 nnoremap gr :action FindUsages<cr>
 nnoremap gi :action GotoImplementation<cr>
 nnoremap gs :action GotoSuperMethod<cr>
+nnoremap gx :action OpenUrlInBrowser<cr>
+nnoremap gX :action OpenInBrowser<cr>
 nnoremap K :action QuickJavaDoc<cr>
 nnoremap ]d :action GotoNextError<cr>
 nnoremap [d :action GotoPreviousError<cr>
