@@ -30,7 +30,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        close_command = "bdelete! %d",
+        close_command = function(n) Snacks.bufdelete(n) end,
         diagnostics = "nvim_lsp",
         always_show_bufferline = true,
         offsets = {
@@ -41,7 +41,6 @@ return {
     keys = {
       { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
       { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete buffer" },
     },
   },
 
@@ -55,6 +54,7 @@ return {
     lazy = false,
     opts = {
       dashboard = { enabled = true },
+      bufdelete = { enabled = true },
     },
     keys = {
       { "<leader>gg", function() Snacks.terminal("lazygit") end, desc = "Lazygit" },

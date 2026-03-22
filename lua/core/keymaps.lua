@@ -37,8 +37,6 @@ map("c", "<C-l>", "<End>", { desc = "End of line" })
 -- Clear search highlight
 map("n", "<BS>", "<cmd>nohl<cr>", { desc = "Clear search highlight" })
 
--- Quit (use <leader>q instead of bare q, to preserve macro recording)
-map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 
 -- Quick open config
 map("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<cr>", { desc = "Edit config" })
@@ -58,6 +56,11 @@ map("n", "<leader>s?", "z=", { desc = "Suggest corrections" })
 -- Standalone Neovim only
 -- =============================================
 if not vim.g.vscode then
+  -- Buffer & Quit
+  map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
+  map("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Close other buffers" })
+  map("n", "<leader>qq", "<cmd>confirm qall<cr>", { desc = "Quit all" })
+
   -- Window navigation (Ctrl + direction)
   map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
   map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })

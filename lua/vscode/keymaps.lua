@@ -39,7 +39,8 @@ map("n", "[d", action("editor.action.marker.prev"), { desc = "Prev diagnostic" }
 -- =============================================
 map("n", "<Tab>", action("workbench.action.nextEditor"), { desc = "Next editor" })
 map("n", "<S-Tab>", action("workbench.action.previousEditor"), { desc = "Prev editor" })
-map("n", "<leader>q", action("workbench.action.closeActiveEditor"), { desc = "Close editor" })
+map("n", "<leader>bd", action("workbench.action.closeActiveEditor"), { desc = "Close editor" })
+map("n", "<leader>bo", action("workbench.action.closeOtherEditors"), { desc = "Close other editors" })
 
 -- =============================================
 -- Window navigation

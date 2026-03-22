@@ -36,7 +36,8 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap <leader>; m'A;<ESC>`'
 nnoremap <BS> :nohl<cr>
-nnoremap <leader>q :action CloseEditor<cr>
+nnoremap <leader>bd :action CloseEditor<cr>
+nnoremap <leader>bo :action CloseAllEditorsButActive<cr>
 
 " ===== Window Navigation (Ctrl + direction) =====
 nnoremap <C-h> <C-w>h
@@ -106,5 +107,5 @@ nnoremap <leader>gb :action Git.Branches<cr>
 
 " ===== Debug =====
 nnoremap <leader>dd :action ChooseDebugConfiguration<cr>
-nnoremap <leader>ba :action ToggleLineBreakpoint<cr>
-nnoremap <leader>bv :action ViewBreakpoints<cr>
+nnoremap <leader>db :action ToggleLineBreakpoint<cr>
+nnoremap <leader>dv :action ViewBreakpoints<cr>

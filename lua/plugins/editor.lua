@@ -45,6 +45,7 @@ return {
     event = "VeryLazy",
     opts = {
       spec = {
+        { "<leader>b", group = "Buffer" },
         { "<leader>s", group = "Spell" },
         { "<Space>g", group = "Git" },
         { "<Space>t", group = "Toggle" },
