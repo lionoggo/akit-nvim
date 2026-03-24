@@ -20,6 +20,13 @@ return {
     },
   },
 
+  -- Comments (treesitter-aware, enhances native gc/gcc)
+  {
+    "folke/ts-comments.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
   -- Autopairs
   {
     "echasnovski/mini.pairs",
