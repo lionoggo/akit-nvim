@@ -57,6 +57,7 @@ return {
       bufdelete = { enabled = true },
       explorer = { enabled = true, replace_netrw = true },
       indent = { enabled = true },
+      scroll = { enabled = true },
       picker = {
         sources = {
           explorer = {

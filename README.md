@@ -187,6 +187,7 @@ init.lua
 | 环绕编辑 | mini.surround | 添加/删除/替换包裹符号 | 全平台 |
 | 自动配对 | mini.pairs | 自动补全括号引号 | 全平台 |
 | 键位提示 | which-key.nvim | 按键后弹出后续键位提示 | 全平台 |
+| 平滑滚动 | snacks.nvim scroll | `<C-d>`/`<C-u>` 等滚动命令带动画效果 | 全平台 |
 | 缩进线 | snacks.nvim indent | 缩进参考线 | 全平台 |
 | 注释 | ts-comments.nvim | Treesitter 感知的注释切换（gcc/gc） | 全平台 |
 | 撤销树 | undotree | 可视化撤销历史 | 全平台 |
