@@ -176,7 +176,7 @@ init.lua
 | 格式化 | conform.nvim | 异步代码格式化 | 全平台 |
 | 语法树 | nvim-treesitter + textobjects + context | 语义高亮、文本对象、上下文显示 | 全平台 |
 | 模糊搜索 | fzf-lua | 文件搜索、文本搜索、Buffer 切换等 | 全平台 |
-| 文件树 | neo-tree.nvim | 侧边文件浏览器 | 全平台 |
+| 文件树 | snacks.nvim explorer | 侧边文件浏览器 | 全平台 |
 | 代码大纲 | aerial.nvim | Treesitter 驱动的符号大纲 | 全平台 |
 | 状态栏 | lualine.nvim | 底部状态栏 | 全平台 |
 | Buffer 栏 | bufferline.nvim | 顶部 Buffer 标签栏 | 全平台 |
@@ -187,7 +187,8 @@ init.lua
 | 环绕编辑 | mini.surround | 添加/删除/替换包裹符号 | 全平台 |
 | 自动配对 | mini.pairs | 自动补全括号引号 | 全平台 |
 | 键位提示 | which-key.nvim | 按键后弹出后续键位提示 | 全平台 |
-| 缩进线 | indent-blankline.nvim | 缩进参考线 | 全平台 |
+| 缩进线 | snacks.nvim indent | 缩进参考线 | 全平台 |
+| 注释 | ts-comments.nvim | Treesitter 感知的注释切换（gcc/gc） | 全平台 |
 | 撤销树 | undotree | 可视化撤销历史 | 全平台 |
 | 翻译 | translate.nvim | 选中文本翻译为中文（Google 翻译） | 全平台 |
 | 输入法 | im-select.nvim | 离开插入模式自动切英文，回来恢复中文 | macOS: im-select, Linux: fcitx5-remote / ibus |
@@ -294,7 +295,7 @@ init.lua
 | `gr` | 查看引用 |
 | `gi` | 跳转到实现 |
 | `gs` | 跳转到父类方法（IdeaVim） |
-| `gx` | 用系统默认应用打开光标下 URL/路径（neo-tree 中打开选中文件） |
+| `gx` | 用系统默认应用打开光标下 URL/路径 |
 | `gX` | 用系统默认应用打开当前文件（如 HTML → 浏览器） |
 | `K` | 悬浮文档 |
 | `]d` / `[d` | 下/上一个诊断 |
@@ -309,6 +310,9 @@ init.lua
 | `s` | Flash 跳转 — 输入目标字符，标签跳转 |
 | `S` | Flash Treesitter — 按语法结构选择 |
 | `f`/`F`/`t`/`T` | Flash 增强版行内跳转 — 默认扩展为多行，可见区域内高亮所有匹配并标签跳转 |
+| `gcc` | 切换当前行注释 |
+| `gc{motion}` | 切换指定范围注释（如 `gcap` 注释当前段落） |
+| `gc` (visual) | 切换选中区域注释 |
 | `sa{motion}{char}` | 添加 surround（如 `saiw"` 给单词加双引号） |
 | `sd{char}` | 删除 surround（如 `sd"` 删除双引号） |
 | `sr{old}{new}` | 替换 surround（如 `sr"'` 双引号换单引号） |
