@@ -56,6 +56,7 @@ return {
       dashboard = { enabled = true },
       bufdelete = { enabled = true },
       explorer = { enabled = true, replace_netrw = true },
+      indent = { enabled = true },
       picker = {
         sources = {
           explorer = {

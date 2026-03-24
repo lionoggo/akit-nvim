@@ -11,7 +11,7 @@ return {
         aerial = true,
         flash = true,
         gitsigns = true,
-        indent_blankline = { enabled = true },
+        snacks_indent = true,
         mason = true,
         snacks = true,
         treesitter = true,

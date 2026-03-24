@@ -64,17 +64,6 @@ return {
     },
   },
 
-  -- Indent guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      indent = { char = "│" },
-      scope = { enabled = true },
-    },
-  },
-
   -- Undotree (keep your undo history visible)
   {
     "mbbill/undotree",
