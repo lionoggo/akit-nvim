@@ -34,7 +34,7 @@ return {
         diagnostics = "nvim_lsp",
         always_show_bufferline = true,
         offsets = {
-          { filetype = "neo-tree", text = "Explorer", highlight = "Directory" },
+          { filetype = "snacks_explorer", text = "Explorer", highlight = "Directory" },
         },
       },
     },
@@ -47,7 +47,7 @@ return {
   -- Icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
-  -- Snacks (dashboard + lazygit terminal)
+  -- Snacks (dashboard + explorer + lazygit terminal)
   {
     "folke/snacks.nvim",
     priority = 1000,
@@ -55,8 +55,22 @@ return {
     opts = {
       dashboard = { enabled = true },
       bufdelete = { enabled = true },
+      explorer = { enabled = true, replace_netrw = true },
+      picker = {
+        sources = {
+          explorer = {
+            tree = true,
+            follow_file = true,
+            hidden = true,
+            git_status = true,
+            diagnostics = true,
+          },
+        },
+      },
     },
     keys = {
+      { "<leader>e", function() Snacks.explorer() end, desc = "Toggle explorer" },
+      { "<leader>nn", function() Snacks.explorer.reveal() end, desc = "Reveal in explorer" },
       { "<leader>gg", function() Snacks.terminal("lazygit") end, desc = "Lazygit" },
       { "<leader>'", function() Snacks.terminal() end, desc = "Terminal" },
     },

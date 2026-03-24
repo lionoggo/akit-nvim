@@ -51,23 +51,6 @@ autocmd("FileType", {
   end,
 })
 
--- Fix: neo-tree opens file without triggering filetype detection
-autocmd("BufWinEnter", {
-  group = augroup("EnsureFiletype", {}),
-  callback = function(args)
-    if vim.bo[args.buf].filetype == "" and vim.bo[args.buf].buftype == "" then
-      local name = vim.api.nvim_buf_get_name(args.buf)
-      if name ~= "" then
-        vim.schedule(function()
-          if vim.api.nvim_buf_is_valid(args.buf) and vim.bo[args.buf].filetype == "" then
-            vim.cmd("filetype detect")
-          end
-        end)
-      end
-    end
-  end,
-})
-
 -- Highlight on yank
 autocmd("TextYankPost", {
   group = augroup("HighlightYank", {}),

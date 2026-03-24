@@ -13,7 +13,7 @@ return {
         gitsigns = true,
         indent_blankline = { enabled = true },
         mason = true,
-        neo_tree = true,
+        snacks = true,
         treesitter = true,
         which_key = true,
       },

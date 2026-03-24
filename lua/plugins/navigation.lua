@@ -36,59 +36,6 @@ return {
     },
   },
 
-  -- File tree
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
-      { "<leader>nn", "<cmd>Neotree reveal<cr>", desc = "Reveal in file tree" },
-    },
-    -- Also load when nvim opens a directory (replaces netrw)
-    init = function()
-      vim.api.nvim_create_autocmd("BufEnter", {
-        group = vim.api.nvim_create_augroup("neotree_start_directory", { clear = true }),
-        callback = function(args)
-          if vim.fn.isdirectory(vim.api.nvim_buf_get_name(args.buf)) == 1 then
-            -- Delete the directory buffer, then open neo-tree
-            vim.api.nvim_buf_delete(args.buf, { force = true })
-            require("neo-tree.command").execute({ action = "focus", dir = vim.fn.expand("%:p:h") })
-          end
-        end,
-      })
-    end,
-    opts = {
-      commands = {
-        system_open = function(state)
-          local node = state.tree:get_node()
-          local path = node:get_id()
-          vim.ui.open(path)
-        end,
-      },
-      open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy", "snacks_dashboard" },
-      close_if_last_window = true,
-      filesystem = {
-        follow_current_file = { enabled = true },
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = false,
-        },
-      },
-      window = {
-        width = 35,
-        mappings = {
-          ["<space>"] = "none", -- don't conflict with Space leader
-          ["gx"] = "system_open",
-        },
-      },
-    },
-  },
-
   -- Code outline (treesitter-powered, replaces vista.vim)
   {
     "stevearc/aerial.nvim",
