@@ -1,10 +1,20 @@
 return {
   -- Default theme (loaded eagerly)
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
+    config = function()
+      require("cyberdream").setup()
+      vim.cmd.colorscheme("cyberdream")
+    end,
+  },
+
+  -- Alternative themes (lazy-loaded, activated via <Space>tt picker)
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = true,
     opts = {
       flavour = "mocha",
       integrations = {
@@ -18,13 +28,7 @@ return {
         which_key = true,
       },
     },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
-    end,
   },
-
-  -- Alternative themes (lazy-loaded, activated via <Space>tt picker)
   {
     "folke/tokyonight.nvim",
     lazy = true,

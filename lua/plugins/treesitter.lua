@@ -7,6 +7,12 @@ return {
     config = function()
       require("nvim-treesitter").setup()
 
+      -- Fix: re-attach treesitter to the initial buffer opened on startup,
+      -- because BufReadPost fires before this config runs when using lazy.nvim
+      vim.schedule(function()
+        vim.api.nvim_exec_autocmds("BufReadPost", { buffer = vim.api.nvim_get_current_buf() })
+      end)
+
       -- Textobjects
       require("nvim-treesitter-textobjects").setup({
         select = { lookahead = true },
