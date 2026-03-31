@@ -23,7 +23,6 @@
 | **Git** | 插件管理 | `brew install git` | `apt install git` | `pacman -S git` |
 | [**Nerd Font**](https://www.nerdfonts.com/) | 图标显示（推荐 Hack Nerd Font） | Homebrew Cask 或手动安装 | 手动安装 | `pacman -S ttf-hack-nerd` |
 | **ripgrep** | 全局文本搜索 | `brew install ripgrep` | `apt install ripgrep` | `pacman -S ripgrep` |
-| **fzf** | 模糊搜索引擎 | `brew install fzf` | `apt install fzf` | `pacman -S fzf` |
 | **Node.js** | markdown-preview、prettierd | `brew install node` | `apt install nodejs npm` | `pacman -S nodejs npm` |
 
 #### 平台特有依赖
@@ -175,7 +174,7 @@ init.lua
 | LSP | nvim-lspconfig + mason.nvim + mason-lspconfig | 语言服务协议 + 自动安装 | 全平台 |
 | 格式化 | conform.nvim | 异步代码格式化 | 全平台 |
 | 语法树 | nvim-treesitter + textobjects + context | 语义高亮、文本对象、上下文显示 | 全平台 |
-| 模糊搜索 | fzf-lua | 文件搜索、文本搜索、Buffer 切换等 | 全平台 |
+| 模糊搜索 | snacks.nvim picker | 文件搜索、文本搜索、Buffer 切换等 | 全平台 |
 | 文件树 | snacks.nvim explorer | 侧边文件浏览器 | 全平台 |
 | 代码大纲 | aerial.nvim | Treesitter 驱动的符号大纲 | 全平台 |
 | 状态栏 | lualine.nvim | 底部状态栏 | 全平台 |
@@ -199,6 +198,14 @@ init.lua
 | LaTeX | vimtex | 编译、PDF 预览、SyncTeX、文本对象 | macOS: Skim.app, Linux: zathura |
 | LaTeX LSP | texlab (via mason) | 补全、诊断、跳转定义、格式化 | 全平台 |
 
+### 何时考虑引入 fzf-lua
+
+当前模糊搜索统一使用 snacks.nvim picker，日常使用完全够用。以下场景可能需要切换回 [fzf-lua](https://github.com/ibhagwan/fzf-lua)：
+
+- **超大型仓库**（10 万+ 文件）：fzf 底层用 C 实现，在极大规模文件搜索中性能更优
+- **需要 fzf 高级查询语法**：如精确匹配 `'keyword`、排除 `!exclude`、前缀匹配 `^prefix`、多条件组合 `term1 | term2`
+- **需要细分搜索源**：fzf-lua 提供 80+ 内置 source（如 `lsp_document_symbols`、`git_bcommits`、`marks`、`registers` 等），覆盖面远超 snacks picker
+
 ## 键位映射
 
 ### Leader 键
@@ -208,7 +215,16 @@ init.lua
 | `,` | 主 Leader | 高频快速操作 |
 | `Space` | 辅助 Leader | 分组操作，按下后 which-key 弹出提示面板 |
 
-> 按下 `,` 或 `Space` 后稍等片刻，which-key 会自动弹出所有可用后续键。
+> which-key 的触发规则：**任意有后续映射的前缀键**按下后稍等片刻都会弹出提示面板，不限于 Leader 键。
+>
+> | 前缀 | 说明 |
+> |------|------|
+> | `,` | 主 Leader，自定义操作 |
+> | `Space` | 辅助 Leader，分组操作 |
+> | `g` | 内置操作前缀（`gd` 跳定义、`gc` 注释等） |
+> | `z` | 折叠 / 拼写相关命令 |
+> | `[` / `]` | 跳转类命令（上/下一个诊断、hunk 等） |
+>
 > 按 `,?` 可查看全部键位映射。
 
 ### 基础操作（全环境通用）

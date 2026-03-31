@@ -75,6 +75,21 @@ return {
       { "<leader>nn", function() Snacks.explorer.reveal() end, desc = "Reveal in explorer" },
       { "<leader>gg", function() Snacks.terminal("lazygit") end, desc = "Lazygit" },
       { "<leader>'", function() Snacks.terminal() end, desc = "Terminal" },
+
+      -- Picker (migrated from fzf-lua)
+      { "<leader>f", function() Snacks.picker.files() end, desc = "Find files" },
+      { "<leader><leader>", function() Snacks.picker.grep() end, desc = "Live grep" },
+      { "<Space>f", function() Snacks.picker.files() end, desc = "Find files" },
+      { "<Space>s", function() Snacks.picker.grep() end, desc = "Search text" },
+      { "<Space>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<Space>r", function() Snacks.picker.recent() end, desc = "Recent files" },
+      { "<Space>h", function() Snacks.picker.help() end, desc = "Help tags" },
+      { "<Space>/", function() Snacks.picker.lines() end, desc = "Search in buffer" },
+      { "<Space>d", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+      { "<Space>tt", function() Snacks.picker.colorschemes() end, desc = "Switch theme" },
+      { "<Space>gc", function() Snacks.picker.git_log() end, desc = "Git commits" },
+      { "<Space>gs", function() Snacks.picker.git_status() end, desc = "Git status" },
+      { "<Space>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     },
   },
 }
