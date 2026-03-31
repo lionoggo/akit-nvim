@@ -66,7 +66,6 @@ autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
-    vim.opt_local.spell = true
     vim.opt_local.conceallevel = 2
   end,
 })
@@ -91,6 +90,24 @@ if vim.fn.has("linux") == 1 then
     end,
   })
 end
+
+-- Explorer: switch to English input method on enter
+autocmd("BufEnter", {
+  group = augroup("ExplorerIMSwitch", {}),
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype ~= "snacks_picker_list" then
+      return
+    end
+    if vim.fn.has("mac") == 1 and vim.fn.executable("im-select") == 1 then
+      vim.fn.jobstart({ "im-select", "com.apple.keylayout.ABC" })
+    elseif vim.fn.executable("fcitx5-remote") == 1 then
+      vim.fn.jobstart({ "fcitx5-remote", "-c" })
+    elseif vim.fn.executable("ibus") == 1 then
+      vim.fn.jobstart({ "ibus", "engine", "xkb:us::eng" })
+    end
+  end,
+})
 
 -- LaTeX: writing-friendly buffer settings
 autocmd("FileType", {

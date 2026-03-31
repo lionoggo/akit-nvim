@@ -66,6 +66,120 @@ return {
             hidden = true,
             git_status = true,
             diagnostics = true,
+            -- 延迟显示（毫秒），光标停留超过此时间才弹出浮窗，0 表示立即显示
+            _float_show_ms = 500,
+            -- 自动隐藏延迟（毫秒），0 表示不自动隐藏
+            _float_hide_ms = 3000,
+            on_show = function(picker)
+              -- 离开 Explorer 窗口时取消待显示计时器并立即关闭浮窗
+              picker.list.win:on("WinLeave", function()
+                local state = picker._filename_float
+                if not state then return end
+                local function cancel(t)
+                  if t and not t:is_closing() then t:stop() t:close() end
+                end
+                cancel(state.show_timer) state.show_timer = nil
+                cancel(state.timer)      state.timer = nil
+                if state.win and vim.api.nvim_win_is_valid(state.win) then
+                  vim.api.nvim_win_close(state.win, true) state.win = nil
+                end
+                if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
+                  vim.api.nvim_buf_delete(state.buf, { force = true }) state.buf = nil
+                end
+              end, { buf = true })
+            end,
+            on_change = function(picker, item)
+              local uv = vim.uv or vim.loop
+              local state = picker._filename_float or {}
+              picker._filename_float = state
+
+              -- 焦点不在 explorer 时不显示浮窗（follow_file 会在编辑器中触发 on_change）
+              if vim.api.nvim_get_current_win() ~= picker.list.win.win then
+                return
+              end
+
+              local function cancel(t)
+                if t and not t:is_closing() then t:stop() t:close() end
+              end
+
+              -- 取消待显示计时器、关闭旧浮窗和隐藏计时器
+              cancel(state.show_timer) state.show_timer = nil
+              cancel(state.timer)      state.timer = nil
+              if state.win and vim.api.nvim_win_is_valid(state.win) then
+                vim.api.nvim_win_close(state.win, true) state.win = nil
+              end
+              if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
+                vim.api.nvim_buf_delete(state.buf, { force = true }) state.buf = nil
+              end
+
+              if not item or not item.file then return end
+
+              local name = vim.fn.fnamemodify(item.file, ":t")
+              local list_win = picker.list.win.win
+              local win_width = vim.api.nvim_win_get_width(list_win)
+
+              -- 计算实际树形缩进深度：每层 2 字符，加上 icon 2 字符
+              local depth = 0
+              local node = item
+              while node and node.parent do
+                depth = depth + 1
+                node = node.parent
+              end
+              local overhead = 2 * depth + 2
+
+              -- 只在文件名超出可见宽度时启动计时器
+              if vim.api.nvim_strwidth(name) <= win_width - overhead then return end
+
+              -- 延迟显示：光标停留超过 show_ms 后才弹出浮窗
+              local show_ms = picker.opts._float_show_ms or 500
+              local show_timer = uv.new_timer()
+              state.show_timer = show_timer
+              show_timer:start(show_ms, 0, vim.schedule_wrap(function()
+                -- 计时器已被取代（光标已移走），不显示
+                if state.show_timer ~= show_timer then return end
+                -- 焦点已离开 explorer
+                if vim.api.nvim_get_current_win() ~= list_win then return end
+                state.show_timer = nil
+                cancel(show_timer)
+
+                local buf = vim.api.nvim_create_buf(false, true)
+                vim.api.nvim_buf_set_lines(buf, 0, -1, false, { " " .. name .. " " })
+
+                local cursor = vim.api.nvim_win_get_cursor(list_win)
+                local float_win = vim.api.nvim_open_win(buf, false, {
+                  relative = "win",
+                  win = list_win,
+                  row = cursor[1] - 1,
+                  col = win_width,
+                  width = vim.api.nvim_strwidth(name) + 2,
+                  height = 1,
+                  style = "minimal",
+                  border = "rounded",
+                  focusable = false,
+                  zindex = 100,
+                })
+
+                state.win = float_win
+                state.buf = buf
+
+                -- 自动隐藏计时器
+                local hide_ms = picker.opts._float_hide_ms or 3000
+                if hide_ms > 0 then
+                  local hide_timer = uv.new_timer()
+                  state.timer = hide_timer
+                  hide_timer:start(hide_ms, 0, vim.schedule_wrap(function()
+                    if state.timer ~= hide_timer then return end
+                    cancel(hide_timer) state.timer = nil
+                    if state.win and vim.api.nvim_win_is_valid(state.win) then
+                      vim.api.nvim_win_close(state.win, true) state.win = nil
+                    end
+                    if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
+                      vim.api.nvim_buf_delete(state.buf, { force = true }) state.buf = nil
+                    end
+                  end))
+                end
+              end))
+            end,
           },
         },
       },
