@@ -57,6 +57,8 @@ return {
         { "<leader>t", group = "Translate" },
         { "<Space>g", group = "Git" },
         { "<Space>t", group = "Toggle" },
+        { "<Space>d", group = "Diagnostics" },
+        { "<leader>q", group = "Session/Quit" },
       },
     },
     keys = {

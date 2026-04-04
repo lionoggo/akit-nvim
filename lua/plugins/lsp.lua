@@ -41,7 +41,7 @@ return {
           map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
           map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
           map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
-          map("n", "<Space>d", vim.diagnostic.open_float, "Line diagnostics")
+          map("n", "<Space>dl", vim.diagnostic.open_float, "Line diagnostics (float)")
         end,
       })
 
@@ -141,6 +141,10 @@ return {
       },
     },
     opts = {
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "black" },
