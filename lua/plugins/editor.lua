@@ -53,6 +53,8 @@ return {
     opts = {
       spec = {
         { "<leader>b", group = "Buffer" },
+        { "<leader>e", group = "Explorer" },
+        { "<leader>n", group = "Note/Scratch" },
         { "<leader>s", group = "Spell" },
         { "<leader>t", group = "Translate" },
         { "<Space>g", group = "Git" },

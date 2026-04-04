@@ -54,7 +54,7 @@ map("n", "<C-k>", action("workbench.action.focusAboveGroup"), { desc = "Focus ab
 -- UI toggles
 -- =============================================
 map("n", "<leader>e", action("workbench.action.toggleSidebarVisibility"), { desc = "Toggle sidebar" })
-map("n", "<leader>nn", action("workbench.files.action.showActiveFileInExplorer"), { desc = "Reveal file in explorer" })
+map("n", "<leader>en", action("workbench.files.action.showActiveFileInExplorer"), { desc = "Reveal file in explorer" })
 
 -- =============================================
 -- Terminal & Git
