@@ -204,7 +204,7 @@ return {
       { "<Space>tt", function() Snacks.picker.colorschemes() end, desc = "Switch theme" },
       { "<Space>gc", function() Snacks.picker.git_log() end, desc = "Git commits" },
       { "<Space>gs", function() Snacks.picker.git_status() end, desc = "Git status" },
-      { "<Space>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { "<Space>k", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     },
   },
 }

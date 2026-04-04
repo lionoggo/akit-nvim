@@ -58,7 +58,6 @@ return {
         { "<Space>g", group = "Git" },
         { "<Space>t", group = "Toggle" },
         { "<Space>d", group = "Diagnostics" },
-        { "<Space>k", group = "Keymaps" },
         { "<leader>q", group = "Session/Quit" },
       },
     },
