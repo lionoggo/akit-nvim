@@ -186,7 +186,6 @@ return {
     },
     keys = {
       { "<leader>e", function() Snacks.explorer() end, desc = "Toggle explorer" },
-      { "<leader>E", function() Snacks.explorer.reveal() end, desc = "Reveal in explorer" },
       { "<leader>ns", function() Snacks.scratch() end, desc = "Scratch (persistent)" },
       { "<leader>nN", function() vim.cmd("enew") vim.bo.buftype = "nofile" vim.bo.bufhidden = "wipe" end, desc = "New temp buffer" },
       { "<leader>gg", function() Snacks.terminal("lazygit") end, desc = "Lazygit" },
