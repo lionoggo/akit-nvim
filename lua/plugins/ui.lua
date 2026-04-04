@@ -76,15 +76,12 @@ return {
                 local state = picker._filename_float
                 if not state then return end
                 local function cancel(t)
-                  if t and not t:is_closing() then t:stop() t:close() end
+                  if t then pcall(function() t:stop() t:close() end) end
                 end
                 cancel(state.show_timer) state.show_timer = nil
                 cancel(state.timer)      state.timer = nil
                 if state.win and vim.api.nvim_win_is_valid(state.win) then
                   vim.api.nvim_win_close(state.win, true) state.win = nil
-                end
-                if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
-                  vim.api.nvim_buf_delete(state.buf, { force = true }) state.buf = nil
                 end
               end, { buf = true })
             end,
@@ -99,7 +96,7 @@ return {
               end
 
               local function cancel(t)
-                if t and not t:is_closing() then t:stop() t:close() end
+                if t then pcall(function() t:stop() t:close() end) end
               end
 
               -- 取消待显示计时器、关闭旧浮窗和隐藏计时器
@@ -107,9 +104,6 @@ return {
               cancel(state.timer)      state.timer = nil
               if state.win and vim.api.nvim_win_is_valid(state.win) then
                 vim.api.nvim_win_close(state.win, true) state.win = nil
-              end
-              if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
-                vim.api.nvim_buf_delete(state.buf, { force = true }) state.buf = nil
               end
 
               if not item or not item.file then return end
@@ -142,7 +136,12 @@ return {
                 state.show_timer = nil
                 cancel(show_timer)
 
-                local buf = vim.api.nvim_create_buf(false, true)
+                -- Reuse scratch buffer to reduce GC pressure
+                local buf = state.buf
+                if not buf or not vim.api.nvim_buf_is_valid(buf) then
+                  buf = vim.api.nvim_create_buf(false, true)
+                  state.buf = buf
+                end
                 vim.api.nvim_buf_set_lines(buf, 0, -1, false, { " " .. name .. " " })
 
                 local cursor = vim.api.nvim_win_get_cursor(list_win)
@@ -160,7 +159,6 @@ return {
                 })
 
                 state.win = float_win
-                state.buf = buf
 
                 -- 自动隐藏计时器
                 local hide_ms = picker.opts._float_hide_ms or 3000
@@ -172,9 +170,6 @@ return {
                     cancel(hide_timer) state.timer = nil
                     if state.win and vim.api.nvim_win_is_valid(state.win) then
                       vim.api.nvim_win_close(state.win, true) state.win = nil
-                    end
-                    if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
-                      vim.api.nvim_buf_delete(state.buf, { force = true }) state.buf = nil
                     end
                   end))
                 end

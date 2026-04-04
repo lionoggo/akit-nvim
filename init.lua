@@ -7,10 +7,10 @@ require("core.options")
 require("core.keymaps")
 
 if vim.g.vscode then
-  -- VSCode-Neovim: only keymaps, no plugins
-  require("vscode.keymaps")
+    -- VSCode-Neovim: only keymaps, no plugins
+    require("vscode.keymaps")
 else
-  -- Standalone Neovim: full setup
-  require("core.autocmds")
-  require("config.lazy")
+    -- Standalone Neovim: full setup
+    require("core.autocmds")
+    require("config.lazy")
 end

@@ -13,7 +13,7 @@ NVIM_RUNTIME="$HOME/.nvim_runtime"
 NVIM_CONFIG="$HOME/.config/nvim"
 IDEAVIMRC="$HOME/.ideavimrc"
 
-info() { echo -e "${BLUE}==>${NC} $*"; }
+() { echo -e "${BLUE}==>${NC} $*"; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
 ok()   { echo -e "${GREEN}[OK]${NC} $*"; }
 err()  { echo -e "${RED}[ERROR]${NC} $*"; }

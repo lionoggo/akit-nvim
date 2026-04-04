@@ -31,7 +31,7 @@ require("lazy").setup({
   },
   performance = {
     rtp = {
-      reset = false,
+      reset = true,
       disabled_plugins = {
         "gzip",
         "tarPlugin",

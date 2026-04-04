@@ -46,4 +46,11 @@ return {
     "tomasr/molokai",
     lazy = true,
   },
+  {
+    "patstockwell/vim-monokai-tasty",
+    lazy = true,
+    config = function()
+      vim.g.vim_monokai_tasty_vivid = 1
+    end,
+  },
 }

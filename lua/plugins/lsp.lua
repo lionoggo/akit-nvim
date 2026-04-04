@@ -26,6 +26,7 @@ return {
 
       -- LSP keymaps (set on attach)
       vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("LspKeymaps", {}),
         callback = function(args)
           local buf = args.buf
           local function map(mode, lhs, rhs, desc)
@@ -39,8 +40,8 @@ return {
           map("n", "K", vim.lsp.buf.hover, "Hover doc")
           map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
           map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
-          map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
-          map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
+          map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "Next diagnostic")
+          map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Prev diagnostic")
           map("n", "<Space>dl", vim.diagnostic.open_float, "Line diagnostics (float)")
         end,
       })
@@ -136,14 +137,14 @@ return {
     keys = {
       {
         "<leader>fm",
-        function() require("conform").format({ async = true, lsp_fallback = true }) end,
+        function() require("conform").format({ async = true, lsp_format = "fallback" }) end,
         desc = "Format",
       },
     },
     opts = {
       format_on_save = {
         timeout_ms = 500,
-        lsp_fallback = true,
+        lsp_format = "fallback",
       },
       formatters_by_ft = {
         lua = { "stylua" },

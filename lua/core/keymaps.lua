@@ -39,7 +39,7 @@ map("n", "<BS>", "<cmd>nohl<cr>", { desc = "Clear search highlight" })
 
 
 -- Quick open config
-map("n", "<leader>rc", "<cmd>e ~/.config/nvim/init.lua<cr>", { desc = "Edit config" })
+map("n", "<leader>rc", function() vim.cmd.edit(vim.fn.stdpath("config") .. "/init.lua") end, { desc = "Edit config" })
 
 -- Visual mode search (search selected text with * or #)
 map("v", "*", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { desc = "Search selected forward" })
@@ -57,8 +57,8 @@ map("n", "<leader>s?", "z=", { desc = "Suggest corrections" })
 -- =============================================
 if not vim.g.vscode then
   -- Buffer & Quit
-  map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
-  map("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Close other buffers" })
+  map("n", "<leader>bd", function() require("snacks").bufdelete() end, { desc = "Delete buffer" })
+  map("n", "<leader>bo", function() require("snacks").bufdelete.other() end, { desc = "Close other buffers" })
   map("n", "<leader>qq", "<cmd>confirm qall<cr>", { desc = "Quit all" })
 
   -- Window navigation (Ctrl + direction)
