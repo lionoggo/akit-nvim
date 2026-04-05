@@ -11,7 +11,7 @@ return {
       vim.schedule(function()
         local buf = vim.api.nvim_get_current_buf()
         if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype ~= "" then
-          vim.treesitter.start(buf)
+          pcall(vim.treesitter.start, buf)
         end
       end)
 
