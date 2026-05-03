@@ -56,6 +56,7 @@ return {
       dashboard = { enabled = true },
       bufdelete = { enabled = true },
       explorer = { enabled = true, replace_netrw = true },
+      image = { enabled = true },
       indent = { enabled = true },
       scroll = { enabled = true },
       picker = {
