@@ -126,6 +126,31 @@ autocmd("BufEnter", {
   end,
 })
 
+-- macOS: save IM on CmdlineEnter, restore on CmdlineLeave (fixes im-select.nvim#41)
+-- im-select.nvim only switches to ABC on CmdlineLeave but never restores — we patch that here.
+if vim.fn.has("mac") == 1 and vim.fn.executable("im-select") == 1 then
+  local im_before_cmdline = nil
+
+  autocmd("CmdlineEnter", {
+    group = augroup("CmdlineIMSwitch", {}),
+    pattern = "*",
+    callback = function()
+      im_before_cmdline = vim.trim(vim.fn.system("im-select"))
+    end,
+  })
+
+  autocmd("CmdlineLeave", {
+    group = "CmdlineIMSwitch",
+    pattern = "*",
+    callback = function()
+      if im_before_cmdline and im_before_cmdline ~= "com.apple.keylayout.ABC" then
+        vim.fn.jobstart({ "im-select", im_before_cmdline })
+      end
+      im_before_cmdline = nil
+    end,
+  })
+end
+
 -- LaTeX: writing-friendly buffer settings
 autocmd("FileType", {
   group = augroup("LatexSettings", {}),

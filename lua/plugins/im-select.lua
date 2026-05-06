@@ -34,7 +34,8 @@ return {
         cfg = {
           default_command = "im-select",
           default_im_select = "com.apple.keylayout.ABC",
-          default_prev_im_select = "im.rime.inputmethod.Squirrel.Hans",
+          set_default_events = { "InsertLeave" }, -- CmdlineLeave handled by autocmds.lua to allow restore
+          set_previous_events = {}, -- disable InsertEnter restore to avoid conflict with Karabiner Shift-switch
           async_switch_im = true,
         }
       elseif is_linux then
