@@ -66,6 +66,7 @@ return {
             tree = true,
             follow_file = true,
             hidden = true,
+            ignored = true,
             git_status = true,
             diagnostics = true,
             -- 延迟显示（毫秒），光标停留超过此时间才弹出浮窗，0 表示立即显示
