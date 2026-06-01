@@ -14,6 +14,7 @@ return {
       },
       heading = {
         sign = false,
+        icons = { "▌ ", "▌ ", "▌ ", "▌ ", "▌ ", "▌ " },
         width = "block",
         right_pad = 2,
         backgrounds = { "RM_H1Bg", "RM_H2Bg", "RM_H3Bg", "RM_H4Bg", "RM_H5Bg", "RM_H6Bg" },
