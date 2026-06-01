@@ -1,16 +1,34 @@
 return {
   -- Default theme (loaded eagerly)
   {
-    "scottmckendry/cyberdream.nvim",
+    "sainnhe/gruvbox-material",
     lazy = false,
     priority = 1000,
     config = function()
-      require("cyberdream").setup()
-      vim.cmd.colorscheme("cyberdream")
+      vim.g.gruvbox_material_background = "medium"
+      vim.g.gruvbox_material_better_performance = 1
+      vim.o.background = "dark"
+      vim.cmd.colorscheme("gruvbox-material")
+
+      for _, hl in ipairs({ "Normal", "NormalNC", "SignColumn", "EndOfBuffer" }) do
+        vim.api.nvim_set_hl(0, hl, { bg = "NONE" })
+      end
     end,
   },
 
   -- Alternative themes (lazy-loaded, activated via <Space>tt picker)
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = true,
+    config = function()
+      require("rose-pine").setup({ dim_inactive_windows = true })
+    end,
+  },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = true,
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -32,15 +50,6 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "night" },
-  },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = true,
-    config = function()
-      vim.g.gruvbox_material_background = "medium"
-      vim.g.gruvbox_material_better_performance = 1
-    end,
   },
   {
     "tomasr/molokai",

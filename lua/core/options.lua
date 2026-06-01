@@ -22,7 +22,7 @@ opt.listchars = { tab = "| ", trail = "·", extends = ">", precedes = "<" }
 opt.showcmd = true
 opt.splitright = true
 opt.splitbelow = true
-opt.cmdheight = 1
+opt.cmdheight = 0
 
 opt.showmatch = true
 opt.matchtime = 2
